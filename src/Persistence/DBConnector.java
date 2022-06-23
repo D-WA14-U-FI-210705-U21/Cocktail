@@ -22,7 +22,7 @@ public class DBConnector {
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet;
     
-    public void read() throws Exception {
+    public ResultSet read(String queryString) throws Exception {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             connect = DriverManager
@@ -32,15 +32,34 @@ public class DBConnector {
             // Statement dient zum Absetzten von SQL-Queries zur Datenbank
             statement = connect.createStatement();
             // Result Set erhält das Ergebnis eines SQL-Queries
-            resultSet = statement.executeQuery("select * from cocktail.users");
-            while(resultSet.next()) {
-                Integer pkID = resultSet.getInt("pk_ID");
-                String name = resultSet.getString("name");
-                // ...
-                
-                System.out.println(pkID + " : " + name);
-            }
-            
+            resultSet = statement.executeQuery(queryString);
+            return resultSet;            
+        } catch(Exception e) {
+            throw e;
+        } finally {
+            close();
+        }
+    }
+    
+    public PreparedStatement getPreparedStatement(String queryString) throws Exception {
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            connect = DriverManager
+                    .getConnection("jdbc:mariadb://localhost/cocktail?"
+                        + "user=root");
+            preparedStatement = connect.prepareStatement(queryString);
+            return preparedStatement;
+        } catch(Exception e) {
+            throw e;
+        } finally {
+            // close();
+        }
+    }
+    
+    public int write(PreparedStatement ps) throws Exception {
+        try {
+            // Result Set erhält das Ergebnis eines SQL-Queries
+            return ps.executeUpdate();           
         } catch(Exception e) {
             throw e;
         } finally {
