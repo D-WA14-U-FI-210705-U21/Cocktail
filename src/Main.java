@@ -4,6 +4,7 @@
  */
 
 import Persistence.DBConnector;
+import Persistence.UsersDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 /**
@@ -14,23 +15,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         
-        DBConnector dbc = new DBConnector();
 
         try {
-            PreparedStatement ps = dbc.getPreparedStatement(
-                    "INSERT INTO Users (name, `password`, admin, editor, locked, registered, birthdate)"
-                            + " VALUES (?, ?, ?, ?, ?, ?, ?)");
-            ps.setString(1, "Admin");
-            ps.setString(2, "jksbdkbsadjkc");
-            ps.setBoolean(3, true);
-            ps.setBoolean(4, false);
-            ps.setBoolean(5, false);
-            ps.setBoolean(6, true);
-            ps.setDate(7, new java.sql.Date(2000, 12, 10));
-            int n = dbc.write(ps);
-            System.out.println("Es wurden " + n + " User hinzugefügt!");
+            UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, new java.sql.Date(2000, 12, 10));
             
-            ResultSet resultSet = dbc.read("select * from cocktail.users");
+            // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
+            
+            DBConnector dbc = new DBConnector();
+            ResultSet resultSet = dbc.read("select * from users");
             while(resultSet.next()) {
                 Integer pkID = resultSet.getInt("pk_ID");
                 String name = resultSet.getString("name");
