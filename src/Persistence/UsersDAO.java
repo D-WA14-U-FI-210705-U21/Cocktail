@@ -20,7 +20,6 @@ public class UsersDAO extends Data.UsersDO {
     // CRUD
     public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) throws Exception {
           UsersDAO newUser;
-          
           PreparedStatement ps = dbc.getPreparedStatement(
                     "INSERT INTO Users (name, `password`, admin, editor, locked, registered, birthdate)"
                             + " VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -32,6 +31,8 @@ public class UsersDAO extends Data.UsersDO {
             ps.setBoolean(6, registered);
             ps.setDate(7, birthdate);
             ResultSet rs = dbc.write(ps);
+            System.out.println(rs.getRow());
+            
             newUser  = new UsersDAO(
                     rs.getString("name"),
                     rs.getString("password"),
@@ -41,6 +42,7 @@ public class UsersDAO extends Data.UsersDO {
                     rs.getBoolean("registered"),
                     rs.getDate("birthdate")
             );
+            
             newUser.setPk_ID(rs.getShort("pk_ID"));
 
             return newUser;

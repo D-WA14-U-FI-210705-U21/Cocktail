@@ -59,8 +59,10 @@ public class DBConnector {
     public ResultSet write(PreparedStatement ps) throws Exception {
         try {
             // Result Set erhält das Ergebnis eines SQL-Queries
-            ResultSet rs = ps.executeQuery();  
-            rs.moveToInsertRow();
+            ResultSet rs = ps.executeQuery();
+            System.out.println("write 1");
+            rs.refreshRow();
+            System.out.println("write 2");
             // System.out.println(rs.getString("pk_ID") + " : " + rs.getString("name"));
             return rs;
         } catch(Exception e) {
