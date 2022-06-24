@@ -37,7 +37,7 @@ public class DBConnector {
         } catch(Exception e) {
             throw e;
         } finally {
-            close();
+             close();
         }
     }
     
@@ -56,15 +56,13 @@ public class DBConnector {
         }
     }
     
-    public ResultSet write(PreparedStatement ps) throws Exception {
+    public void write(PreparedStatement ps) throws Exception {
         try {
             // Result Set erhält das Ergebnis eines SQL-Queries
-            ResultSet rs = ps.executeQuery();
-            System.out.println("write 1");
-            rs.refreshRow();
-            System.out.println("write 2");
+            ResultSet rs = ps.executeQuery();  
+            // rs.moveToInsertRow();
             // System.out.println(rs.getString("pk_ID") + " : " + rs.getString("name"));
-            return rs;
+            return;
         } catch(Exception e) {
             throw e;
         } finally {
