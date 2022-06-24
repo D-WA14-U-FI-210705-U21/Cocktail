@@ -45,4 +45,46 @@ public class UsersDAO extends Data.UsersDO {
 
             return newUser;
     }
+    //Hier hat der Dozent eine Methohde delete mit throws implementiert
+    /*
+    
+    public static void delete (short id) throws Exception{
+    PreparedStatement ps = dbc.getPreparedStatement(
+    "Delete FROM User where pk_ID = " + id );
+    dbc.write(ps);
+    return newUser;
+    }
+    
+    public UsersDAO update() thorws Exception {
+    UsersDAO updateUser = null;
+    PreparedStatement ps = dbc.getPreparedStatemnt ("UPDATE  ")
+    }
+    
+     public static void delete (String name ) throws Exception{
+    PreparedStatement ps = dbc.getPreparedStatement(
+    "Delete FROM User where `name` =`" + name + "'"); );
+    dbc.write(ps);
+    }
+    
+    
+    
+    
+    )
+    }
+    
+    konkrete Instanz löschen aus der Datenbank 
+    
+    
+    public void delete() throws Exception{
+    PreparedStatement ps = dbc.getPrepared Statement
+    }
+    
+    */
+    
+    
+    
+    
+    
+    
+    
 }
