@@ -5,7 +5,6 @@
 
 import Persistence.DBConnector;
 import Persistence.UsersDAO;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 /**
  *
@@ -18,7 +17,7 @@ public class Main {
 
         try {
             UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, new java.sql.Date(2000, 12, 10));
-            
+            System.out.println(newUser);
             // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
             
             DBConnector dbc = new DBConnector();

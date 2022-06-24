@@ -13,7 +13,7 @@ import java.sql.*;
 public class UsersDAO extends Data.UsersDO {
     private static DBConnector dbc = new DBConnector();
     
-    public UsersDAO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) {
+    public UsersDAO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) {
         super(name, password, admin, editor, locked, registered, birthdate);
     }
     
@@ -31,18 +31,39 @@ public class UsersDAO extends Data.UsersDO {
             ps.setBoolean(5, locked);
             ps.setBoolean(6, registered);
             ps.setDate(7, birthdate);
-            ResultSet rs = dbc.write(ps);
+            dbc.write(ps);
+            
+            ResultSet rsnew = dbc.read("SELECT DISTINCT * FROM USERS WHERE `NAME`='" + name + "'");
+            while(rsnew.next()){
             newUser  = new UsersDAO(
-                    rs.getString("name"),
-                    rs.getString("password"),
-                    rs.getBoolean("admin"),
-                    rs.getBoolean("editor"),
-                    rs.getBoolean("locked"),
-                    rs.getBoolean("registered"),
-                    rs.getDate("birthdate")
+                    rsnew.getString("name"),
+                    rsnew.getString("password"),
+                    rsnew.getBoolean("admin"),
+                    rsnew.getBoolean("editor"),
+                    rsnew.getBoolean("locked"),
+                    rsnew.getBoolean("registered"),
+                    rsnew.getDate("birthdate").toString()
             );
-            newUser.setPk_ID(rs.getShort("pk_ID"));
-
+            newUser.setPk_ID(rsnew.getShort("pk_ID"));
             return newUser;
+            }
+            return null;
     }
+    
+    
+
+    @Override
+    public String toString() {
+        return "UsersDAO:"
+                + "\n pkID: " + getPk_ID()
+                + "\n name: " + getName()
+                + "\n password: " + getPassword()
+                + "\n admin: " + isAdmin()
+                + "\n editor: " + isEditor()
+                + "\n locked: " + isLocked()
+                + "\n registered: " + isRegistered()
+                + "\n birthdate: " + getBirthdate();
+    }
+    
+    
 }
