@@ -27,7 +27,6 @@ public class DBConnector {
             connect = DriverManager
                     .getConnection("jdbc:mariadb://localhost/cocktail?"
                             + "user=root");
-
             // Statement dient zum Absetzten von SQL-Queries zur Datenbank
             statement = connect.createStatement();
             // Result Set erhält das Ergebnis eines SQL-Queries
