@@ -130,7 +130,7 @@ public class UsersDAO extends Data.UsersDO {
 
     @Override
     public String toString() {
-        return "UsersDAO"
+        return "User:"
                 + "\n pk_ID: " + getPk_ID()
                 + "\n name: " + getName()
                 + "\n password: " + getPassword()
