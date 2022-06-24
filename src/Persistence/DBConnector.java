@@ -15,57 +15,56 @@ import java.sql.Statement;
  * @author Dozent
  */
 public class DBConnector {
+
     private Connection connect = null;
     private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet;
-    
+
     public ResultSet read(String queryString) throws Exception {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             connect = DriverManager
                     .getConnection("jdbc:mariadb://localhost/cocktail?"
-                        + "user=root");
-            
+                            + "user=root");
+
             // Statement dient zum Absetzten von SQL-Queries zur Datenbank
             statement = connect.createStatement();
             // Result Set erhält das Ergebnis eines SQL-Queries
             resultSet = statement.executeQuery(queryString);
-            return resultSet;            
-        } catch(Exception e) {
+            return resultSet;
+        } catch (Exception e) {
             throw e;
         } finally {
-            //close();
+            close();
         }
     }
-    
+
     public PreparedStatement getPreparedStatement(String queryString) throws Exception {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             connect = DriverManager
                     .getConnection("jdbc:mariadb://localhost/cocktail?"
-                        + "user=root");
+                            + "user=root");
             preparedStatement = connect.prepareStatement(queryString);
             return preparedStatement;
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw e;
-        } finally {
-            // close();
         }
     }
-    
+
     public void write(PreparedStatement ps) throws Exception {
         try {
             // Result Set erhält das Ergebnis eines SQL-Queries
-            ps.executeQuery();  
+            ps.executeQuery();
             // System.out.println(rs.getString("pk_ID") + " : " + rs.getString("name"));
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw e;
         } finally {
-            //close();
+            close();
         }
     }
-    
+
     private void close() {
         try {
             if (resultSet != null) {
@@ -77,8 +76,8 @@ public class DBConnector {
             if (connect != null) {
                 connect.close();
             }
-        } catch(Exception e) {
-            
+        } catch (Exception e) {
+
         }
     }
 }

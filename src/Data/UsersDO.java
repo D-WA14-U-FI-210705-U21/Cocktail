@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author cardi
  */
 public abstract class UsersDO {
+
     private short pk_ID = 0;
     private String name;
     private String password;
@@ -30,8 +31,6 @@ public abstract class UsersDO {
         this.registered = registered;
         this.birthdate = Date.valueOf(birthdate);
     }
-    
-    
 
     public short getPk_ID() {
         return pk_ID;
@@ -64,7 +63,7 @@ public abstract class UsersDO {
     public String getBirthdate() {
         return birthdate.toString();
     }
-    
+
     protected void setPk_ID(short pk_ID) {
         this.pk_ID = pk_ID;
     }
@@ -96,5 +95,5 @@ public abstract class UsersDO {
     public void setBirthdate(String birthdate) {
         this.birthdate = Date.valueOf(birthdate);
     }
-    
+
 }
