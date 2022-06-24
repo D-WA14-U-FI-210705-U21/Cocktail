@@ -52,12 +52,14 @@ public class DBConnector {
         }
     }
 
+    
     public void write(PreparedStatement ps) throws Exception {
         try {
             // Result Set erhält das Ergebnis eines SQL-Queries
             ps.executeQuery();
             // System.out.println(rs.getString("pk_ID") + " : " + rs.getString("name"));
-        } catch (Exception e) {
+            return;
+        } catch(Exception e) {
             throw e;
         } finally {
             close();

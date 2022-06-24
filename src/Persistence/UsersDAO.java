@@ -21,7 +21,7 @@ public class UsersDAO extends Data.UsersDO {
 
     // CRUD
     public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) throws Exception {
-        UsersDAO newUser;
+        UsersDAO newUser = null;
 
         PreparedStatement ps = dbc.getPreparedStatement(
                 "INSERT INTO Users (name, `password`, admin, editor, locked, registered, birthdate)"
@@ -34,35 +34,100 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(6, registered);
         ps.setDate(7, birthdate);
         dbc.write(ps);
+        
+        return UsersDAO.read(name);
+   }
+    
+    public static UsersDAO read(int id) throws Exception {
+        UsersDAO newUser = null;
 
-        ResultSet rsnew = dbc.read("SELECT DISTINCT * FROM USERS WHERE `NAME`='" + name + "'");
-        while (rsnew.next()) {
+        ResultSet rs = dbc.read("select DISTINCT * FROM Users WHERE `pk_ID`=" + id);
+        while (rs.next()) {
             newUser = new UsersDAO(
-                    rsnew.getString("name"),
-                    rsnew.getString("password"),
-                    rsnew.getBoolean("admin"),
-                    rsnew.getBoolean("editor"),
-                    rsnew.getBoolean("locked"),
-                    rsnew.getBoolean("registered"),
-                    rsnew.getDate("birthdate").toString()
+                    rs.getString("name"),
+                    rs.getString("password"),
+                    rs.getBoolean("admin"),
+                    rs.getBoolean("editor"),
+                    rs.getBoolean("locked"),
+                    rs.getBoolean("registered"),
+                    rs.getDate("birthdate")
             );
-            newUser.setPk_ID(rsnew.getShort("pk_ID"));
-            return newUser;
+            newUser.setPk_ID(rs.getShort("pk_ID"));
         }
-        return null;
+        
+        return newUser;
+    }
+    
+    public static UsersDAO read(String name) throws Exception {
+        UsersDAO newUser = null;
+        
+        ResultSet rs = dbc.read("SELECT DISTINCT * FROM Users WHERE `name`='" + name + "'");
+        while (rs.next()) {
+            newUser = new UsersDAO(
+                    rs.getString("name"),
+                    rs.getString("password"),
+                    rs.getBoolean("admin"),
+                    rs.getBoolean("editor"),
+                    rs.getBoolean("locked"),
+                    rs.getBoolean("registered"),
+                    rs.getDate("birthdate")
+            );
+            newUser.setPk_ID(rs.getShort("pk_ID"));
+        }
+        
+        return newUser;
+    }
+    
+    public UsersDAO update() throws Exception {
+        UsersDAO updatedUser = null;
+        
+        PreparedStatement ps = dbc.getPreparedStatement(
+                "UPDATE Users SET "
+                        + "`name` = ? , "
+                        + "`password` = ? , "
+                        + "`admin` = ? , "
+                        + "`editor` = ? , "
+                        + "`locked` = ? , "
+                        + "`registered` = ? , "
+                        + "`birthdate` = ? "
+                        + "WHERE `pk_ID` = ? ;");
+        ps.setString(1, this.getName());
+        ps.setString(2, this.getPassword());
+        ps.setBoolean(3, this.isAdmin());
+        ps.setBoolean(4, this.isEditor());
+        ps.setBoolean(5, this.isLocked());
+        ps.setBoolean(6, this.isRegistered());
+        ps.setDate(7, this.getBirthdate());
+        ps.setShort(8, this.getPk_ID());
+        
+        dbc.write(ps);
+        
+        updatedUser = UsersDAO.read(this.getPk_ID());
+        
+        return updatedUser;
+    }
+    
+    public static void delete(short id) throws Exception {
+         PreparedStatement ps = dbc.getPreparedStatement(
+                "DELETE FROM Users WHERE pk_ID = " + id);
+        
+        dbc.write(ps);      
+    }
+    
+    public static void delete(String name) throws Exception {
+         PreparedStatement ps = dbc.getPreparedStatement(
+                "DELETE FROM Users WHERE `name` = '" + name + "'");
+        
+        dbc.write(ps);      
     }
 
-    @Override
-    public String toString() {
-        return "UsersDAO:"
-                + "\n pkID: " + getPk_ID()
-                + "\n name: " + getName()
-                + "\n password: " + getPassword()
-                + "\n admin: " + isAdmin()
-                + "\n editor: " + isEditor()
-                + "\n locked: " + isLocked()
-                + "\n registered: " + isRegistered()
-                + "\n birthdate: " + getBirthdate();
+    
+    // konkrete Instanz löschen aus der Datenbank
+    public void delete() throws Exception {
+        UsersDAO.delete(this.getPk_ID());
+        this.setPk_ID((short)0);
     }
-
+    
+    
+    
 }
