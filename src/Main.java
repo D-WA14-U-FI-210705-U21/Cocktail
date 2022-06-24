@@ -17,7 +17,7 @@ public class Main {
         System.out.println("Hello World!");
 
         try {
-            UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, new java.sql.Date(2000, 12, 10));
+            UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, "2000-12-10");
             System.out.println(newUser);
             // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
 

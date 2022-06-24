@@ -58,7 +58,6 @@ public class DBConnector {
             // Result Set erhält das Ergebnis eines SQL-Queries
             ps.executeQuery();
             // System.out.println(rs.getString("pk_ID") + " : " + rs.getString("name"));
-            return;
         } catch(Exception e) {
             throw e;
         } finally {

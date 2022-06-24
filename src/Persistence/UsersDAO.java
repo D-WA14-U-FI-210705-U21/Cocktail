@@ -20,7 +20,7 @@ public class UsersDAO extends Data.UsersDO {
     }
 
     // CRUD
-    public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) throws Exception {
+    public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) throws Exception {
         UsersDAO newUser = null;
 
         PreparedStatement ps = dbc.getPreparedStatement(
@@ -32,7 +32,7 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(4, editor);
         ps.setBoolean(5, locked);
         ps.setBoolean(6, registered);
-        ps.setDate(7, birthdate);
+        ps.setDate(7, Date.valueOf(birthdate));
         dbc.write(ps);
         
         return UsersDAO.read(name);
@@ -50,7 +50,7 @@ public class UsersDAO extends Data.UsersDO {
                     rs.getBoolean("editor"),
                     rs.getBoolean("locked"),
                     rs.getBoolean("registered"),
-                    rs.getDate("birthdate")
+                    rs.getDate("birthdate").toString()
             );
             newUser.setPk_ID(rs.getShort("pk_ID"));
         }
@@ -70,7 +70,7 @@ public class UsersDAO extends Data.UsersDO {
                     rs.getBoolean("editor"),
                     rs.getBoolean("locked"),
                     rs.getBoolean("registered"),
-                    rs.getDate("birthdate")
+                    rs.getDate("birthdate").toString()
             );
             newUser.setPk_ID(rs.getShort("pk_ID"));
         }
@@ -97,7 +97,7 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(4, this.isEditor());
         ps.setBoolean(5, this.isLocked());
         ps.setBoolean(6, this.isRegistered());
-        ps.setDate(7, this.getBirthdate());
+        ps.setDate(7, Date.valueOf(this.getBirthdate()));
         ps.setShort(8, this.getPk_ID());
         
         dbc.write(ps);
