@@ -127,6 +127,20 @@ public class UsersDAO extends Data.UsersDO {
         UsersDAO.delete(this.getPk_ID());
         this.setPk_ID((short)0);
     }
+
+    @Override
+    public String toString() {
+        return "UsersDAO"
+                + "\n pk_ID: " + getPk_ID()
+                + "\n name: " + getName()
+                + "\n password: " + getPassword()
+                + "\n admin: " + isAdmin()
+                + "\n editor: " + isEditor()
+                + "\n locked: " + isLocked()
+                + "\n registered: " + isRegistered()
+                + "\n birthdate: " + getBirthdate();
+    }
+    
     
     
     
