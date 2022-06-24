@@ -35,7 +35,7 @@ public class DBConnector {
         } catch (Exception e) {
             throw e;
         } finally {
-            close();
+             close();
         }
     }
 
