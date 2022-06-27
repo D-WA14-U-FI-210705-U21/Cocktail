@@ -21,17 +21,17 @@ public abstract class UsersDO {
     private boolean registered;
     private Date birthdate;
 
-    protected UsersDO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) {
+    protected UsersDO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) {
         this.name = name;
         this.password = password;
         this.admin = admin;
         this.editor = editor;
         this.locked = locked;
         this.registered = registered;
-        this.birthdate = birthdate;
+        this.birthdate = Date.valueOf(birthdate);
     }
-    
-    
+
+                                      
 
     public short getPk_ID() {
         return pk_ID;
@@ -61,10 +61,10 @@ public abstract class UsersDO {
         return registered;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public String getBirthdate() {
+        return birthdate.toString();
     }
-    
+
     protected void setPk_ID(short pk_ID) {
         this.pk_ID = pk_ID;
     }
@@ -93,8 +93,20 @@ public abstract class UsersDO {
         this.registered = registered;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = Date.valueOf(birthdate);
     }
-    
+
+    @Override
+    public String toString() {
+        return "User:"
+                + "\n pk_ID: " + getPk_ID()
+                + "\n name: " + getName()
+                + "\n password: " + getPassword()
+                + "\n admin: " + isAdmin()
+                + "\n editor: " + isEditor()
+                + "\n locked: " + isLocked()
+                + "\n registered: " + isRegistered()
+                + "\n birthdate: " + getBirthdate() + "\n";
+    }  
 }

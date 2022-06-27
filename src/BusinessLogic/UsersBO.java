@@ -5,15 +5,15 @@
  */
 package BusinessLogic;
 
-import java.sql.Date;
-
 /**
  *
  * @author cardi
  */
 public class UsersBO extends Data.UsersDO {
 
-    public UsersBO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) {
+    public UsersBO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) {
         super(name, password, admin, editor, locked, registered, birthdate);
     }
+    
+    
 }
