@@ -30,5 +30,5 @@ nbbuild/*
 dist/*
 nbdist/*
 .nb-gradle/*
-*.properties
-*.xml
+**/*.properties
+**/*.xml
