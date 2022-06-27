@@ -7,6 +7,7 @@ package Persistence;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,6 +60,18 @@ public class IngredientsDAO extends Data.IngredientsDO {
         return newIngredient;
     }
     
+    public static ArrayList<IngredientsDAO> readAll() throws Exception{
+        short i = 1;
+        ArrayList<IngredientsDAO> ingredientsList = new ArrayList<>();
+        ResultSet rs = dbc.read("SELECT * FROM `ingredients`");
+        while(rs.next()){
+            ingredientsList.add(read(i));
+            i++;
+        }
+        
+        return ingredientsList;
+    }
+    
     public IngredientsDAO update() throws Exception {
         IngredientsDAO updatedIngredient = null;
         
@@ -105,7 +118,7 @@ public class IngredientsDAO extends Data.IngredientsDO {
                 + "\n pk_ID: " + getPk_ID()
                 + "\n name: " + getName()
                 + "\n alcohol: " + getAlcohol()
-                + " Vol. \n";
+                + " Vol.\n";
     } 
     
 }

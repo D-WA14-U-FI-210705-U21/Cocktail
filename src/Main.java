@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import Persistence.DBConnector;
 import Persistence.IngredientsDAO;
 import Persistence.UsersDAO;
-import java.sql.ResultSet;
 
 /**
  *
@@ -23,7 +21,9 @@ public class Main {
             System.out.println(UsersDAO.readAll());
             
             IngredientsDAO newIngredient = IngredientsDAO.create("Orangensaft", 0.0f);
-            System.out.println(newIngredient);
+            IngredientsDAO newInVodka = IngredientsDAO.create("Vodka", 42.0f);
+            System.out.println(IngredientsDAO.readAll());
+            
             
         } catch (Exception e) {
             System.out.println(e);
