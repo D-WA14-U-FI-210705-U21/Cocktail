@@ -96,4 +96,16 @@ public abstract class UsersDO {
         this.birthdate = Date.valueOf(birthdate);
     }
 
+    @Override
+    public String toString() {
+        return "User:"
+                + "\n pk_ID: " + getPk_ID()
+                + "\n name: " + getName()
+                + "\n password: " + getPassword()
+                + "\n admin: " + isAdmin()
+                + "\n editor: " + isEditor()
+                + "\n locked: " + isLocked()
+                + "\n registered: " + isRegistered()
+                + "\n birthdate: " + getBirthdate() + "\n";
+    }  
 }

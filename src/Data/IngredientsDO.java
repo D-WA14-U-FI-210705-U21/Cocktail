@@ -44,6 +44,13 @@ public class IngredientsDO {
         this.alcohol = alcohol;
     }
     
-    
+    @Override
+    public String toString() {
+        return "Ingredients:"
+                + "\n pk_ID: " + getPk_ID()
+                + "\n name: " + getName()
+                + "\n alcohol: " + getAlcohol()
+                + " Vol.\n";
+    } 
     
 }

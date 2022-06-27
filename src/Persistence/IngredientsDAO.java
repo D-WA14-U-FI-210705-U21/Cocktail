@@ -112,13 +112,5 @@ public class IngredientsDAO extends Data.IngredientsDO {
         this.setPk_ID((short)0);
     }
     
-    @Override
-    public String toString() {
-        return "Ingredients:"
-                + "\n pk_ID: " + getPk_ID()
-                + "\n name: " + getName()
-                + "\n alcohol: " + getAlcohol()
-                + " Vol.\n";
-    } 
     
 }
