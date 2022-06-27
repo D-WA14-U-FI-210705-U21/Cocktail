@@ -22,7 +22,6 @@ public class UsersDAO extends Data.UsersDO {
 
     // CRUD
     public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) throws Exception {
-        UsersDAO newUser = null;
 
         PreparedStatement ps = dbc.getPreparedStatement(
                 "INSERT INTO Users (name, `password`, admin, editor, locked, registered, birthdate)"
@@ -155,9 +154,6 @@ public class UsersDAO extends Data.UsersDO {
                 + "\n locked: " + isLocked()
                 + "\n registered: " + isRegistered()
                 + "\n birthdate: " + getBirthdate() + "\n";
-    }
-    
-    
-    
+    }  
     
 }
