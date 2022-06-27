@@ -46,7 +46,7 @@ public class IngredientsDO {
     
     @Override
     public String toString() {
-        return "Ingredients:"
+        return "Ingredient:"
                 + "\n pk_ID: " + getPk_ID()
                 + "\n name: " + getName()
                 + "\n alcohol: " + getAlcohol()
