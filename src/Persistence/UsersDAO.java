@@ -87,19 +87,7 @@ public class UsersDAO extends Data.UsersDO {
         return newUser;
     }
     
-    public static ArrayList<UsersDAO> readAll() throws Exception {
-        ArrayList<UsersDAO> resultList = new ArrayList<UsersDAO>();
-        ResultSet resultSet = dbc.read("Select * From users ");
-        while (resultSet.next()) {
-            resultList.add(new UsersDAO(resultSet.getString("name"), resultSet.getString("password"),
-                    resultSet.getBoolean("admin"), resultSet.getBoolean("editor"),
-                    resultSet.getBoolean("locked"), resultSet.getBoolean("registered"),
-                    resultSet.getDate("birthdate")));
-            //resultList.add(resultSet(i));// später von Jenny klauen ;)!!!!!!!!!!!!
-        }  
-        return resultList;
-    }
-    
+
     public UsersDAO update() throws Exception {
         UsersDAO updatedUser = null;
         
