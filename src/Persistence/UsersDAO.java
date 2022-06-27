@@ -6,6 +6,7 @@
 package Persistence;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -76,6 +77,12 @@ public class UsersDAO extends Data.UsersDO {
         }
         
         return newUser;
+    }
+    
+    ArrayList<UsersDAO> readAll() throws Exception {
+        ArrayList<UsersDAO> resultList = new ArrayList<UsersDAO>();
+        
+        return resultList;
     }
     
     public UsersDAO update() throws Exception {
