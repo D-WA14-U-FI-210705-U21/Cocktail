@@ -73,7 +73,7 @@ public class UsersDAO extends Data.UsersDO {
         return newUser;
     }
     
-    ArrayList<UsersDAO> readAll() throws Exception {
+    public static ArrayList<UsersDAO> readAll() throws Exception {
         ArrayList<UsersDAO> resultList = new ArrayList<UsersDAO>();
         ResultSet resultSet = dbc.read("Select * From users ");
         while (resultSet.next()) {
