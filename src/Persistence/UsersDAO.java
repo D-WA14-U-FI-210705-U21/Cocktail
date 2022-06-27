@@ -10,13 +10,12 @@ public class UsersDAO extends Data.UsersDO {
 
     private static DBConnector dbc = new DBConnector();
 
-    public UsersDAO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) {
+    public UsersDAO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) {
         super(name, password, admin, editor, locked, registered, birthdate);
     }
 
     // CRUD
-    public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) throws Exception {
-        UsersDAO newUser = null;
+    public static UsersDAO create(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) throws Exception {
 
         PreparedStatement ps = dbc.getPreparedStatement(
                 "INSERT INTO Users (name, `password`, admin, editor, locked, registered, birthdate)"
@@ -27,7 +26,7 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(4, editor);
         ps.setBoolean(5, locked);
         ps.setBoolean(6, registered);
-        ps.setDate(7, birthdate);
+        ps.setDate(7, Date.valueOf(birthdate));
         dbc.write(ps);
         
         return UsersDAO.read(name);
@@ -45,12 +44,27 @@ public class UsersDAO extends Data.UsersDO {
                     rs.getBoolean("editor"),
                     rs.getBoolean("locked"),
                     rs.getBoolean("registered"),
-                    rs.getDate("birthdate")
+                    rs.getDate("birthdate").toString()
             );
             newUser.setPk_ID(rs.getShort("pk_ID"));
         }
         
         return newUser;
+    }
+    
+    public static ArrayList<UsersDAO> readAll() throws Exception{
+        int i = 1;
+        ArrayList<UsersDAO> userList = new ArrayList<>();
+        try{
+        ResultSet rs = dbc.read("SELECT * FROM users");
+        while(rs.next()){
+            userList.add(read(i));
+            i++;
+        }
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return userList;
     }
     
     public static UsersDAO read(String name) throws Exception {
@@ -65,7 +79,7 @@ public class UsersDAO extends Data.UsersDO {
                     rs.getBoolean("editor"),
                     rs.getBoolean("locked"),
                     rs.getBoolean("registered"),
-                    rs.getDate("birthdate")
+                    rs.getDate("birthdate").toString()
             );
             newUser.setPk_ID(rs.getShort("pk_ID"));
         }
@@ -105,7 +119,7 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(4, this.isEditor());
         ps.setBoolean(5, this.isLocked());
         ps.setBoolean(6, this.isRegistered());
-        ps.setDate(7, this.getBirthdate());
+        ps.setDate(7, Date.valueOf(this.getBirthdate()));
         ps.setShort(8, this.getPk_ID());
         
         dbc.write(ps);
@@ -135,7 +149,7 @@ public class UsersDAO extends Data.UsersDO {
         UsersDAO.delete(this.getPk_ID());
         this.setPk_ID((short)0);
     }
-    
+
     
     
 }

@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/gitlocal/Cocktail/Cocktail/src/Persistence/UsersDAO.java</file>
             <file>file:/C:/gitlocal/Cocktail/Cocktail/src/BusinessLogic/UsersBO.java</file>
             <file>file:/C:/gitlocal/Cocktail/Cocktail/src/Data/UsersDO.java</file>
+=======
+            <file>file:/C:/gitlocal/Cocktail/Cocktail/src/Main.java</file>
+            <file>file:/C:/gitlocal/Cocktail/Cocktail/src/Persistence/UsersDAO.java</file>
+>>>>>>> origin/gin_create_testReturn
             <file>file:/C:/gitlocal/Cocktail/Cocktail/src/Persistence/DBConnector.java</file>
         </group>
     </open-files>
