@@ -86,7 +86,7 @@ public class UsersDAO extends Data.UsersDO {
             Boolean iseditor = resultSet.getBoolean("editor");
             Boolean islocked = resultSet.getBoolean("locked");
             Boolean isregistered = resultSet.getBoolean("registered");
-            Date birthdate = resultSet.getDate("birthdate");
+            String birthdate = resultSet.getDate("birthdate").toString();
             
             UsersDAO udao = new UsersDAO(name, password, isadmin, iseditor, islocked, isregistered, birthdate); 
 
