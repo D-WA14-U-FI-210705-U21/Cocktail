@@ -26,33 +26,36 @@ public class IngredientsDAO extends Data.IngredientsDO {
                 + " VALUES (?, ?)");
         
         ps.setString(1, name);
-        ps.setFloat(1, alc);
+        ps.setFloat(2, alc);
         dbc.write(ps);
-        return read(name);
+        
+        return IngredientsDAO.read(name);
     }
     
     public static IngredientsDAO read(short pk_ID) throws Exception{
         IngredientsDAO newIngredient = null;
-        ResultSet rs = dbc.read("SELECT DISTINCT FROM `ingredients` "
+        ResultSet rs = dbc.read("SELECT * FROM `ingredients` "
                 + "WHERE `pk_ID`=" + pk_ID);
         while(rs.next()){
-        rs.getString("name");
-        rs.getFloat("alcohol");
-        }
+            newIngredient = new IngredientsDAO(
+                    rs.getString("name"),
+                    rs.getFloat("alcohol"));
             newIngredient.setPk_ID(rs.getShort("pk_ID"));
+        }
         return newIngredient;
     }
     
     public static IngredientsDAO read(String name) throws Exception{
         IngredientsDAO newIngredient = null;
-        ResultSet rs = dbc.read("SELECT DISTINCT FROM `ingredients` "
-                + "WHERE `name`=" + name);
+        ResultSet rs = dbc.read("SELECT * FROM `ingredients` "
+                + "WHERE `name`= '" + name + "'");
         
         while(rs.next()){
-        rs.getString("name");
-        rs.getFloat("alcohol");
-        }
+            newIngredient = new IngredientsDAO(
+                    rs.getString("name"),
+                    rs.getFloat("alcohol"));
             newIngredient.setPk_ID(rs.getShort("pk_ID"));
+        }
         return newIngredient;
     }
     
@@ -102,7 +105,7 @@ public class IngredientsDAO extends Data.IngredientsDO {
                 + "\n pk_ID: " + getPk_ID()
                 + "\n name: " + getName()
                 + "\n alcohol: " + getAlcohol()
-                + "\n";
+                + " Vol. \n";
     } 
     
 }

@@ -4,6 +4,7 @@
  */
 
 import Persistence.DBConnector;
+import Persistence.IngredientsDAO;
 import Persistence.UsersDAO;
 import java.sql.ResultSet;
 
@@ -19,19 +20,11 @@ public class Main {
         try {
             UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, "2000-12-10");
             System.out.println(newUser);
-            // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
-
-//            DBConnector dbc = new DBConnector();
-//            ResultSet resultSet = dbc.read("select * from users");
-//            while (resultSet.next()) {
-//                Integer pkID = resultSet.getInt("pk_ID");
-//                String name = resultSet.getString("name");
-//                // ...
-//
-//                System.out.println(pkID + " : " + name);
-//            }
-
             System.out.println(UsersDAO.readAll());
+            
+            IngredientsDAO newIngredient = IngredientsDAO.create("Orangensaft", 0.0f);
+            System.out.println(newIngredient);
+            
         } catch (Exception e) {
             System.out.println(e);
         }
