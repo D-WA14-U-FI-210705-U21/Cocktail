@@ -10,5 +10,49 @@ package Data;
  * @author cardi
  */
 public class CocktailIngredientsDO {
+    private int fk_pk_cocktail_ID;
+    private int fk_pk_ingredient_ID;
+    private int amount;
+    private String unit;
+    
+    public CocktailIngredientsDO(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) {
+        this.fk_pk_cocktail_ID = fk_pk_cocktail_ID;
+        this.fk_pk_ingredient_ID = fk_pk_ingredient_ID;
+        this.amount = amount;
+        this.unit = unit;
+    }
+
+    public int getFk_pk_cocktail_ID() {
+        return fk_pk_cocktail_ID;
+    }
+
+    public void setFk_pk_cocktail_ID(int fk_pk_cocktail_ID) {
+        this.fk_pk_cocktail_ID = fk_pk_cocktail_ID;
+    }
+
+    public int getFk_pk_ingredient_ID() {
+        return fk_pk_ingredient_ID;
+    }
+
+    public void setFk_pk_ingredient_ID(int fk_pk_ingredient_ID) {
+        this.fk_pk_ingredient_ID = fk_pk_ingredient_ID;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    
     
 }
