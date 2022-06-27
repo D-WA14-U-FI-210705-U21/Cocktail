@@ -21,15 +21,17 @@ public class Main {
             System.out.println(newUser);
             // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
 
-            DBConnector dbc = new DBConnector();
-            ResultSet resultSet = dbc.read("select * from users");
-            while (resultSet.next()) {
-                Integer pkID = resultSet.getInt("pk_ID");
-                String name = resultSet.getString("name");
-                // ...
+//            DBConnector dbc = new DBConnector();
+//            ResultSet resultSet = dbc.read("select * from users");
+//            while (resultSet.next()) {
+//                Integer pkID = resultSet.getInt("pk_ID");
+//                String name = resultSet.getString("name");
+//                // ...
+//
+//                System.out.println(pkID + " : " + name);
+//            }
 
-                System.out.println(pkID + " : " + name);
-            }
+            System.out.println(UsersDAO.readAll());
         } catch (Exception e) {
             System.out.println(e);
         }

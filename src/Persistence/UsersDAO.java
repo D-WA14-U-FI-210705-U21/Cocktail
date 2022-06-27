@@ -6,6 +6,7 @@
 package Persistence;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -56,6 +57,21 @@ public class UsersDAO extends Data.UsersDO {
         }
         
         return newUser;
+    }
+    
+    public static ArrayList<UsersDAO> readAll() throws Exception{
+        int i = 1;
+        ArrayList<UsersDAO> userList = new ArrayList<>();
+        try{
+        ResultSet rs = dbc.read("SELECT * FROM users");
+        while(rs.next()){
+            userList.add(read(i));
+            i++;
+        }
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return userList;
     }
     
     public static UsersDAO read(String name) throws Exception {
@@ -138,7 +154,7 @@ public class UsersDAO extends Data.UsersDO {
                 + "\n editor: " + isEditor()
                 + "\n locked: " + isLocked()
                 + "\n registered: " + isRegistered()
-                + "\n birthdate: " + getBirthdate();
+                + "\n birthdate: " + getBirthdate() + "\n";
     }
     
     
