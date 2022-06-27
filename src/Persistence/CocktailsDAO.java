@@ -53,23 +53,23 @@ public class CocktailsDAO extends Data.CocktailsDO{
         return newCocktail;
     }
     
-    // 
-//    public static CocktailsDAO read(String name) throws Exception {
-//        CocktailsDAO newCocktail = null;
-//
-//        ResultSet rs = dbc.read("select DISTINCT * FROM Cocktails WHERE `name`='" + name + "'");
-//        while (rs.next()) {
-//            newCocktail = new CocktailsDAO(
-//                    rs.getString("name"),
-//                    rs.getString("description")
-//                   
-//            );
-//            
-//            newCocktail.setPk_ID(rs.getShort("pk_ID"));
-//        }
-//        
-//        return newCocktail;
-//    }
+     
+    public static CocktailsDAO read(String name) throws Exception {
+        CocktailsDAO newCocktail = null;
+
+        ResultSet rs = dbc.read("select DISTINCT * FROM Cocktails WHERE `name`='" + name + "'");
+        while (rs.next()) {
+            newCocktail = new CocktailsDAO(
+                    rs.getString("name"),
+                    rs.getString("description")
+                   
+            );
+            
+            newCocktail.setPk_ID(rs.getShort("pk_ID"));
+        }
+        
+        return newCocktail;
+    }
     
     public static ArrayList<CocktailsDAO> readAll() throws Exception
     {
@@ -127,6 +127,6 @@ public class CocktailsDAO extends Data.CocktailsDO{
         this.setPk_ID((short)0);
     }
     
-    private 
+    
     
 }

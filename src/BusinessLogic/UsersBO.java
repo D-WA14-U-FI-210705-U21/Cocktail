@@ -16,4 +16,6 @@ public class UsersBO extends Data.UsersDO {
     public UsersBO(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, Date birthdate) {
         super(name, password, admin, editor, locked, registered, birthdate);
     }
+    
+    
 }

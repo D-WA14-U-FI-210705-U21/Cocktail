@@ -39,6 +39,14 @@ public abstract class CocktailsDO {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    
+    @Override
+    public String toString() {
+        return "UsersDAO:"
+                + "\n pkID: " + getPk_ID()
+                + "\n name: " + getName();
+    }
 
     
     
