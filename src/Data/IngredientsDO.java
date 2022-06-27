@@ -11,4 +11,6 @@ package Data;
  */
 public class IngredientsDO {
     
+    
+    
 }
