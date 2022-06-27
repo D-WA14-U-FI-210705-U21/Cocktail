@@ -13,11 +13,11 @@ import java.sql.ResultSet;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
         
 
         try {
-            UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, new java.sql.Date(2000, 12, 10));
+            //UsersDAO newUser = UsersDAO.create("Editor", "dfsdfsdf", false, true, false, true, new java.sql.Date(2000, 12, 10));
             
             // System.out.println("Es wurde User mit der ID " + newUser.getPk_ID() + " hinzugefügt!");
             
@@ -29,9 +29,15 @@ public class Main {
                 // ...
                 
                 System.out.println(pkID + " : " + name);
+                
+                
+          
             }
+            System.out.println(UsersDAO.readAll());
         } catch(Exception e) {
             System.out.println(e);
         }
+
+        
     }
 }

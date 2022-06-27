@@ -5,10 +5,20 @@
  */
 package BusinessLogic;
 
+
+
 /**
  *
  * @author cardi
  */
-public class CocktailsBO {
+public class CocktailsBO extends Data.CocktailsDO{
+
+    public CocktailsBO(String name, String description) {
+        super(name, description);
+    }
+
+    
+    
+    
     
 }

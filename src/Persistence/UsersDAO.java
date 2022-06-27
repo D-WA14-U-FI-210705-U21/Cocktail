@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Persistence;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author cardi
- */
+
+
 public class UsersDAO extends Data.UsersDO {
 
     private static DBConnector dbc = new DBConnector();
@@ -81,7 +75,14 @@ public class UsersDAO extends Data.UsersDO {
     
     ArrayList<UsersDAO> readAll() throws Exception {
         ArrayList<UsersDAO> resultList = new ArrayList<UsersDAO>();
-        
+        ResultSet resultSet = dbc.read("Select * From users ");
+        while (resultSet.next()) {
+            resultList.add(new UsersDAO(resultSet.getString("name"), resultSet.getString("password"),
+                    resultSet.getBoolean("admin"), resultSet.getBoolean("editor"),
+                    resultSet.getBoolean("locked"), resultSet.getBoolean("registered"),
+                    resultSet.getDate("birthdate")));
+            //resultList.add(resultSet(i));// später von Jenny klauen ;)!!!!!!!!!!!!
+        }  
         return resultList;
     }
     
