@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusinessLogic;
+package Persistence;
 
 /**
  *
  * @author Jennifer Lange
  */
-public class AdminManagerException {
+public class AdminException extends Exception{
     
+    
+    public AdminException(String message){
+        super(message);
+    }
 }

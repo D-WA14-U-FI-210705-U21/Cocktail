@@ -15,7 +15,7 @@ public interface IUserManager {
     public abstract UsersDO showUser(int id);
     public abstract UsersDO showUser(String name);
     public abstract ArrayList<UsersDO> showAllUsers();
-    public abstract UsersDO editUser(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate);
+    public abstract UsersDO editUser(UsersDO usersDO);
     public abstract UsersDO saveUser(UsersDO usersDO);
     public abstract void delete(int id);
     public abstract void delete(String name);
