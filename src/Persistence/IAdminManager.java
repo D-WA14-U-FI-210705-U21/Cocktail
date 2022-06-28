@@ -9,10 +9,9 @@ import Data.UsersDO;
 import java.util.ArrayList;
 
 /**
- * @param <T> Type, as the argument in the method delete() can vary
  * @author Jennifer Lange
  */
-public interface IAdminManager<T> {
+public interface IAdminManager {
     
     
     /* Create*/
@@ -31,9 +30,15 @@ public interface IAdminManager<T> {
     public abstract UsersDO editAdmin(String name, String password, boolean admin, boolean editor, boolean locked, boolean registered, String birthdate);
     
     /* Delete */
-    public abstract void deleteGuest(T type);
-    public abstract void deleteEditor(T type);
-    public abstract void deleteAdmin(T type);
+    public abstract void deleteGuest(int id);
+    public abstract void deleteGuest(String name);
+    public abstract void deleteGuest(UsersDO usersDO);
+    public abstract void deleteEditor(int id);
+    public abstract void deleteEditor(String name);
+    public abstract void deleteEditor(UsersDO usersDO);
+    public abstract void deleteAdmin(int id);
+    public abstract void deleteAdmin(String name);
+    public abstract void deleteAdmin(UsersDO usersDO);
     
     
 }
