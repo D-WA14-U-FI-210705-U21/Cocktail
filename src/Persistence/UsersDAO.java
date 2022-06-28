@@ -118,13 +118,20 @@ public class UsersDAO extends Data.UsersDO {
         ps.setBoolean(5, this.isLocked());
         ps.setBoolean(6, this.isRegistered());
         ps.setDate(7, Date.valueOf(this.getBirthdate()));
-        ps.setShort(8, this.getPk_ID());
 
         dbc.write(ps);
 
         updatedUser = UsersDAO.read(this.getPk_ID());
+        
+        this.setName(updatedUser.getName());
+        this.setPassword(updatedUser.getPassword());
+        this.setAdmin(updatedUser.isAdmin());
+        this.setEditor(updatedUser.isEditor());
+        this.setLocked(updatedUser.isLocked());
+        this.setRegistered(updatedUser.isRegistered());
+        this.setBirthdate(this.getBirthdate());
 
-        return updatedUser;
+        return this;
     }
 
     public static void delete(short id) throws Exception {
