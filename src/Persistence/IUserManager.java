@@ -24,7 +24,7 @@ public interface IUserManager {
     
     /* SELECT/FILTER */
     public abstract UsersDO selectUser(String name);
-    public abstract UsersDO selectUserFilter(boolean admin, boolean editor, boolean locked, boolean registered, String birthdate);
+    public abstract UsersDO selectUserFilter(boolean admin, boolean editor, boolean locked, boolean registered);
     public abstract UsersDO sortUsers(String column);
     
 }

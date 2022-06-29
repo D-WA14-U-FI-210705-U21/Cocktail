@@ -121,7 +121,8 @@ public class UserManager implements IUserManager{
     }
 
     @Override
-    public UsersDO selectUserFilter(boolean admin, boolean editor, boolean locked, boolean registered, String birthdate) {
+    public UsersDO selectUserFilter(boolean admin, boolean editor, boolean locked, boolean registered) {
+        
         return null;
     }
 
