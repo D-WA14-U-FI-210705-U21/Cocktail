@@ -33,3 +33,4 @@ nbdist/*
 .nb-gradle/*
 *.properties
 *.xml
+**/project.properties
