@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Data;
+package Backend;
 
 /**
  *
  * @author cardi
  */
-public class CocktailIngredientsDO {
+public class ZutatenDO {
     private int fk_pk_cocktail_ID;
     private int fk_pk_ingredient_ID;
     private int amount;
     private String unit;
     
-    public CocktailIngredientsDO(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) {
+    public ZutatenDO(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) {
         this.fk_pk_cocktail_ID = fk_pk_cocktail_ID;
         this.fk_pk_ingredient_ID = fk_pk_ingredient_ID;
         this.amount = amount;

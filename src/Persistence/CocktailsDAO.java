@@ -5,6 +5,7 @@
  */
 package Persistence;
 
+import Backend.DBConnector;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author cardi
  */
-public class CocktailsDAO extends Data.CocktailsDO{
+public class CocktailsDAO extends Backend.CocktailsDO{
     private static DBConnector dbc = new DBConnector();
 
     public CocktailsDAO(String name, String description) {

@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Data;
+package Backend;
 
 /**
  *
  * @author cardi
  */
-public class IngredientsDO {
+public class GetraenkeDO {
     
     private short pk_ID = 0;
     private String name;
     private float alcohol = 0.0f;
 
-    protected IngredientsDO(String name, float alc) {
+    protected GetraenkeDO(String name, float alc) {
         this.name = name;
         this.alcohol = alc;
     }

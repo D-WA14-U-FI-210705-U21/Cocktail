@@ -5,6 +5,7 @@
  */
 package Persistence;
 
+import Backend.DBConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -12,17 +13,17 @@ import java.sql.ResultSet;
  *
  * @author cardi
  */
-public class CocktailIngredientsDAO extends Data.CocktailIngredientsDO {
+public class ZutatenDAO extends Backend.ZutatenDO {
 
     private static DBConnector dbc = new DBConnector();
 
-    public CocktailIngredientsDAO(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) {
+    public ZutatenDAO(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) {
         super(fk_pk_cocktail_ID, fk_pk_ingredient_ID, amount, unit);
 
     }
 
-    public static CocktailIngredientsDAO create(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) throws Exception {
-        CocktailIngredientsDAO cidao = null;
+    public static ZutatenDAO create(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID, int amount, String unit) throws Exception {
+        ZutatenDAO cidao = null;
 
         PreparedStatement ps = dbc.getPreparedStatement("INSERT INTO cocktails_ingredients (fk_pk_cocktail_ID, fk_pk_ingredient_ID, amount, unit) "
                 + "VALUES (?, ?, ?, ?)");
@@ -33,18 +34,18 @@ public class CocktailIngredientsDAO extends Data.CocktailIngredientsDO {
         ps.setString(4, unit);
         dbc.write(ps);
 
-        return CocktailIngredientsDAO.read(fk_pk_cocktail_ID, fk_pk_ingredient_ID);
+        return ZutatenDAO.read(fk_pk_cocktail_ID, fk_pk_ingredient_ID);
     }
 
-    public static CocktailIngredientsDAO read(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID) throws Exception {
-        CocktailIngredientsDAO cidao = null;
+    public static ZutatenDAO read(int fk_pk_cocktail_ID, int fk_pk_ingredient_ID) throws Exception {
+        ZutatenDAO cidao = null;
 
         ResultSet rs = dbc.read("SELECT * FROM cocktails_ingredients "
                 + "WHERE `fk_pk_cocktail_ID` = " + fk_pk_cocktail_ID + " AND "
                 + "`fk_pk_ingredient_ID` = " + fk_pk_ingredient_ID + " ;");
         while (rs.next()) {
 
-            cidao = new CocktailIngredientsDAO(
+            cidao = new ZutatenDAO(
                     rs.getInt("fk_pk_cocktail_ID"),
                     rs.getInt("fk_pk_ingredient_ID"),
                     rs.getInt("amount"),
@@ -55,8 +56,8 @@ public class CocktailIngredientsDAO extends Data.CocktailIngredientsDO {
         return null;
     }
 
-    public CocktailIngredientsDAO update() throws Exception {
-        CocktailIngredientsDAO updatedCidao = null;
+    public ZutatenDAO update() throws Exception {
+        ZutatenDAO updatedCidao = null;
 
         PreparedStatement ps = dbc.getPreparedStatement(
                 "UPDATE USER SET"
@@ -72,7 +73,7 @@ public class CocktailIngredientsDAO extends Data.CocktailIngredientsDO {
 
         dbc.write(ps);
 
-        updatedCidao = CocktailIngredientsDAO.read(this.getFk_pk_cocktail_ID(), this.getFk_pk_ingredient_ID());
+        updatedCidao = ZutatenDAO.read(this.getFk_pk_cocktail_ID(), this.getFk_pk_ingredient_ID());
 
         return updatedCidao;
 
@@ -87,7 +88,7 @@ public class CocktailIngredientsDAO extends Data.CocktailIngredientsDO {
     }
 
     public void delete() throws Exception {
-        CocktailIngredientsDAO.delete(this.getFk_pk_cocktail_ID(), this.getFk_pk_ingredient_ID());
+        ZutatenDAO.delete(this.getFk_pk_cocktail_ID(), this.getFk_pk_ingredient_ID());
         
     }
 
