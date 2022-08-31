@@ -1,4 +1,4 @@
-package Data;
+package Backend;
 
 
 public abstract class CocktailsDO {
@@ -10,11 +10,7 @@ public abstract class CocktailsDO {
         this.name = name;
         this.description = description;
     }
-    
-    
-    
-    
-    
+      
 
     public short getPk_ID() {
         return pk_ID;

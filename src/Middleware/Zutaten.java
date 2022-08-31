@@ -3,22 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BusinessLogic;
-
-
+package Middleware;
 
 /**
  *
- * @author cardi
+ * @author buennig
  */
-public class CocktailsBO extends Data.CocktailsDO{
-
-    public CocktailsBO(String name, String description) {
-        super(name, description);
-    }
-
-    
-    
+public class Zutaten {
     
     
 }

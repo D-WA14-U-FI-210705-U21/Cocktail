@@ -5,6 +5,7 @@
  */
 package Persistence;
 
+import Backend.DBConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -13,15 +14,15 @@ import java.util.ArrayList;
  *
  * @author cardi
  */
-public class IngredientsDAO extends Data.IngredientsDO {
+public class GetraenkeDAO extends Backend.GetraenkeDO {
     
     private static DBConnector dbc = new DBConnector();
     
-    public IngredientsDAO(String name, float alc) {
+    public GetraenkeDAO(String name, float alc) {
         super(name, alc);
     }
     
-    public static IngredientsDAO create(String name, float alc) throws Exception{
+    public static GetraenkeDAO create(String name, float alc) throws Exception{
         PreparedStatement ps = dbc.getPreparedStatement(
                 "INSERT INTO `ingredients` (name, alcohol)"
                 + " VALUES (?, ?)");
@@ -30,15 +31,15 @@ public class IngredientsDAO extends Data.IngredientsDO {
         ps.setFloat(2, alc);
         dbc.write(ps);
         
-        return IngredientsDAO.read(name);
+        return GetraenkeDAO.read(name);
     }
     
-    public static IngredientsDAO read(short pk_ID) throws Exception{
-        IngredientsDAO newIngredient = null;
+    public static GetraenkeDAO read(short pk_ID) throws Exception{
+        GetraenkeDAO newIngredient = null;
         ResultSet rs = dbc.read("SELECT * FROM `ingredients` "
                 + "WHERE `pk_ID`=" + pk_ID);
         while(rs.next()){
-            newIngredient = new IngredientsDAO(
+            newIngredient = new GetraenkeDAO(
                     rs.getString("name"),
                     rs.getFloat("alcohol"));
             newIngredient.setPk_ID(rs.getShort("pk_ID"));
@@ -46,13 +47,13 @@ public class IngredientsDAO extends Data.IngredientsDO {
         return newIngredient;
     }
     
-    public static IngredientsDAO read(String name) throws Exception{
-        IngredientsDAO newIngredient = null;
+    public static GetraenkeDAO read(String name) throws Exception{
+        GetraenkeDAO newIngredient = null;
         ResultSet rs = dbc.read("SELECT * FROM `ingredients` "
                 + "WHERE `name`= '" + name + "'");
         
         while(rs.next()){
-            newIngredient = new IngredientsDAO(
+            newIngredient = new GetraenkeDAO(
                     rs.getString("name"),
                     rs.getFloat("alcohol"));
             newIngredient.setPk_ID(rs.getShort("pk_ID"));
@@ -60,9 +61,9 @@ public class IngredientsDAO extends Data.IngredientsDO {
         return newIngredient;
     }
     
-    public static ArrayList<IngredientsDAO> readAll() throws Exception{
+    public static ArrayList<GetraenkeDAO> readAll() throws Exception{
         short i = 1;
-        ArrayList<IngredientsDAO> ingredientsList = new ArrayList<>();
+        ArrayList<GetraenkeDAO> ingredientsList = new ArrayList<>();
         ResultSet rs = dbc.read("SELECT * FROM `ingredients`");
         while(rs.next()){
             ingredientsList.add(read(i));
@@ -72,8 +73,8 @@ public class IngredientsDAO extends Data.IngredientsDO {
         return ingredientsList;
     }
     
-    public IngredientsDAO update() throws Exception {
-        IngredientsDAO updatedIngredient = null;
+    public GetraenkeDAO update() throws Exception {
+        GetraenkeDAO updatedIngredient = null;
         
         PreparedStatement ps = dbc.getPreparedStatement(
                 "UPDATE Users SET "
@@ -104,13 +105,5 @@ public class IngredientsDAO extends Data.IngredientsDO {
         
         dbc.write(ps);      
     }
-
-    
-    // konkrete Instanz löschen aus der Datenbank
-    public void delete() throws Exception {
-        UsersDAO.delete(this.getPk_ID());
-        this.setPk_ID((short)0);
-    }
-    
     
 }
