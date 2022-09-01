@@ -19,8 +19,15 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[700, 420]"/>
+    </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[700, 400]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
+    <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[700, 420]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -44,7 +51,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="comboCategory" min="-2" pref="96" max="-2" attributes="0"/>
@@ -78,7 +85,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnClose" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnClose" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnApply" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="chkfruity" min="-2" max="-2" attributes="0"/>
@@ -86,7 +93,7 @@
                               <Component id="chkHard" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chkCream" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnReset" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnReset1" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -99,7 +106,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="comboCategory" pref="35" max="32767" attributes="0"/>
+                  <Component id="comboCategory" max="32767" attributes="0"/>
                   <Component id="comboCreate" alignment="1" max="32767" attributes="0"/>
                   <Component id="btnSearch" alignment="0" max="32767" attributes="0"/>
                   <Component id="searchField" alignment="0" max="32767" attributes="0"/>
@@ -136,7 +143,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnApply" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnReset" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnReset1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnClose" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -302,6 +309,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Schlie&#xdf;en"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="chkNoAlk">
       <Properties>
@@ -328,7 +338,7 @@
         <Property name="text" type="java.lang.String" value="Anwenden"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnReset">
+    <Component class="javax.swing.JButton" name="btnReset1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zur&#xfc;cksetzen"/>
       </Properties>

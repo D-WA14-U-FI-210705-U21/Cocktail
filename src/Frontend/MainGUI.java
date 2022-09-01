@@ -5,6 +5,8 @@
  */
 package Frontend;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author buennig
@@ -46,13 +48,16 @@ public class MainGUI extends javax.swing.JFrame {
         chkHard = new javax.swing.JCheckBox();
         chkCream = new javax.swing.JCheckBox();
         btnApply = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        btnReset1 = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 420));
         setPreferredSize(new java.awt.Dimension(700, 400));
+        setResizable(false);
+        setSize(new java.awt.Dimension(700, 420));
 
         searchField.setText("hier tippen");
 
@@ -117,6 +122,11 @@ public class MainGUI extends javax.swing.JFrame {
         btnAll.setPreferredSize(new java.awt.Dimension(60, 25));
 
         btnClose.setText("Schließen");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         chkNoAlk.setText("alkoholfrei");
 
@@ -128,7 +138,7 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnApply.setText("Anwenden");
 
-        btnReset.setText("Zurücksetzen");
+        btnReset1.setText("Zurücksetzen");
 
         jMenu3.setText("File");
         jMenuBar.add(jMenu3);
@@ -143,7 +153,7 @@ public class MainGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,18 +191,18 @@ public class MainGUI extends javax.swing.JFrame {
                                 .addComponent(chkNoAlk)
                                 .addComponent(chkHard)
                                 .addComponent(chkCream))
-                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(btnReset1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(32, 32, 32))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApply, btnReset});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApply, btnClose, btnReset1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(comboCategory)
                     .addComponent(comboCreate, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchField))
@@ -223,7 +233,7 @@ public class MainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnApply)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReset)
+                        .addComponent(btnReset1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnClose))
                     .addComponent(listPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -248,6 +258,11 @@ public class MainGUI extends javax.swing.JFrame {
     private void btnPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPSActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        close();
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,7 +308,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnGJ;
     private javax.swing.JToggleButton btnKO;
     private javax.swing.JToggleButton btnPS;
-    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnReset1;
     private javax.swing.JButton btnSearch;
     private javax.swing.JToggleButton btnTZ;
     private javax.swing.JCheckBox chkCream;
@@ -309,7 +324,9 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane listPane;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
-    // Beginn Methoden
+    
+
+// Beginn Methoden
     
     // select Cocktail / Getraenk
     public void selectCategory()
@@ -374,7 +391,8 @@ public class MainGUI extends javax.swing.JFrame {
     // schließen
     public void close()
     {
-        
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        System.exit(0);
     }
     
     // Cocktail erstellen
