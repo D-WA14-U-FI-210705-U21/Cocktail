@@ -7,6 +7,8 @@ package Frontend;
 
 import javax.swing.JFrame;
 import  Middleware.Cocktail;
+import java.awt.event.ActionEvent;
+import java.util.Arrays;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
@@ -105,12 +107,27 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnDF.setText("D - F");
         btnDF.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDFActionPerformed(evt);
+            }
+        });
 
         btnGJ.setText("G - J");
         btnGJ.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnGJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGJActionPerformed(evt);
+            }
+        });
 
         btnKO.setText("K - O");
         btnKO.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnKO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKOActionPerformed(evt);
+            }
+        });
 
         btnPS.setText("P - S");
         btnPS.setPreferredSize(new java.awt.Dimension(60, 25));
@@ -122,9 +139,19 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnTZ.setText("T - Z");
         btnTZ.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnTZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTZActionPerformed(evt);
+            }
+        });
 
         btnAll.setText("*");
         btnAll.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllActionPerformed(evt);
+            }
+        });
 
         btnClose.setText("Schließen");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +296,26 @@ public class MainGUI extends javax.swing.JFrame {
         close();
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void btnDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDFActionPerformed
+
+    private void btnGJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGJActionPerformed
+
+    private void btnKOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKOActionPerformed
+
+    private void btnTZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTZActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTZActionPerformed
+
+    private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,6 +398,7 @@ public class MainGUI extends javax.swing.JFrame {
         DefaultListModel listModel = new DefaultListModel();
             listContainer = new JList(listModel);
         cocktailsList = Cocktail.getAll();
+        Arrays.sort(cocktailsList);
         for (Cocktail cocktail : cocktailsList)
         {
             listModel.addElement(cocktail.getName());
@@ -359,9 +407,14 @@ public class MainGUI extends javax.swing.JFrame {
     }
     
     // Sortieren der Auswahlliste
-    public void filterSearchResultALF()
+    public void filterSearchResultALF(ActionEvent e)
     {
-        
+        if (e.getSource().equals(btnAC))
+        {
+            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+            //aus der Liste entfernt
+            
+        }
     }
     
     // Anwenden der Filtereinstellungen
