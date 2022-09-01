@@ -350,7 +350,7 @@ public class MainGUI extends javax.swing.JFrame {
     {
         DefaultListModel listModel = new DefaultListModel();
             listContainer = new JList(listModel);
-        cocktailsList = new Cocktail.getAll();
+        cocktailsList = Cocktail.getAll();
         for (Cocktail cocktail : cocktailsList)
         {
             listModel.addElement(cocktail.getName());
