@@ -6,12 +6,17 @@
 package Frontend;
 
 import javax.swing.JFrame;
+import  Middleware.Cocktail;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
  * @author buennig
  */
 public class MainGUI extends javax.swing.JFrame {
+    // Attribute
+    private Cocktail[] cocktailsList;
 
     /**
      * Creates new form MainGUI
@@ -34,7 +39,7 @@ public class MainGUI extends javax.swing.JFrame {
         comboCreate = new javax.swing.JComboBox<>();
         comboCategory = new javax.swing.JComboBox<>();
         listPane = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listContainer = new javax.swing.JList<>();
         btnAC = new javax.swing.JToggleButton();
         btnDF = new javax.swing.JToggleButton();
         btnGJ = new javax.swing.JToggleButton();
@@ -85,10 +90,10 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        jList1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jList1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        listPane.setViewportView(jList1);
+        listContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        listContainer.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        listContainer.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listPane.setViewportView(listContainer);
 
         btnAC.setText("A - C");
         btnAC.setPreferredSize(new java.awt.Dimension(60, 25));
@@ -317,10 +322,10 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox chkfruity;
     private javax.swing.JComboBox<String> comboCategory;
     private javax.swing.JComboBox<String> comboCreate;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JList<String> listContainer;
     private javax.swing.JScrollPane listPane;
     private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
@@ -343,6 +348,13 @@ public class MainGUI extends javax.swing.JFrame {
     // Liste von Cocktails 
     public void listSearchResult()
     {
+        DefaultListModel listModel = new DefaultListModel();
+            listContainer = new JList(listModel);
+        cocktailsList = new Cocktail.getAll();
+        for (Cocktail cocktail : cocktailsList)
+        {
+            listModel.addElement(cocktail.getName());
+        }
         
     }
     
