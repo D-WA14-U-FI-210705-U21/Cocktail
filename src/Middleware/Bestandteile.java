@@ -1,6 +1,6 @@
 package Middleware;
 
-//import Frontend.Dialog;
+import Frontend.Dialog;
 
 public class Bestandteile {
     private int pk_ID = 0;
@@ -66,6 +66,11 @@ public class Bestandteile {
         this.status = status;
     }
    
+    public static Bestandteile[] getAll(){
+        Bestandteile[] retVal = new Bestandteile[1];
+
+        return retVal;
+    }
     
     /*
     Methoden
@@ -139,7 +144,7 @@ public class Bestandteile {
             }
         } 
         catch(Exception ex) {
-            //new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;

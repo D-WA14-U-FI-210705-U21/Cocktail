@@ -5,7 +5,7 @@
  */
 package Middleware;
 
-//import Frontend.Dialog;
+import Frontend.Dialog;
 
 /**
  *
@@ -69,7 +69,7 @@ public class Zutaten {
             }
         } 
         catch(Exception ex) {
-            //new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;
