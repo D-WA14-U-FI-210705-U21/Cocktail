@@ -1,6 +1,6 @@
 package Middleware;
 
-import Frontend.Dialog;
+//import Frontend.Dialog;
 import java.util.Arrays;
 //import java.util.HashSet;
 import java.util.Objects;
@@ -202,7 +202,7 @@ public class Cocktail {
             }
         } 
         catch(Exception ex) {
-            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+          //new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;
