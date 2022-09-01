@@ -27,111 +27,116 @@ public class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        searchField = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        comboCreate = new javax.swing.JComboBox<>();
+        comboCategory = new javax.swing.JComboBox<>();
+        listPane = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
-        jToggleButton6 = new javax.swing.JToggleButton();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
-        jMenuBar2 = new javax.swing.JMenuBar();
+        btnAC = new javax.swing.JToggleButton();
+        btnDF = new javax.swing.JToggleButton();
+        btnGJ = new javax.swing.JToggleButton();
+        btnKO = new javax.swing.JToggleButton();
+        btnPS = new javax.swing.JToggleButton();
+        btnTZ = new javax.swing.JToggleButton();
+        btnAll = new javax.swing.JToggleButton();
+        btnClose = new javax.swing.JButton();
+        chkNoAlk = new javax.swing.JCheckBox();
+        chkfruity = new javax.swing.JCheckBox();
+        chkHard = new javax.swing.JCheckBox();
+        chkCream = new javax.swing.JCheckBox();
+        btnApply = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-
-        jPopupMenu1.setComponentPopupMenu(jPopupMenu1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 400));
 
-        jTextField1.setText("hier tippen");
+        searchField.setText("hier tippen");
 
-        jButton1.setText("Suchen");
+        btnSearch.setText("Suchen");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocktail erstellen", "Cocktail editieren", "Getraenk erstellen", "Getraenk editieren" }));
-        jComboBox1.setToolTipText("");
-        jComboBox1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jComboBox1.setInheritsPopupMenu(true);
-        jComboBox1.setName("Select"); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboCreate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocktail erstellen", "Cocktail editieren", "Getraenk erstellen", "Getraenk editieren" }));
+        comboCreate.setToolTipText("");
+        comboCreate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        comboCreate.setInheritsPopupMenu(true);
+        comboCreate.setName("Select"); // NOI18N
+        comboCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboCreateActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocktail", "Getraenk" }));
-        jComboBox2.setToolTipText("");
-        jComboBox2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jComboBox2.setInheritsPopupMenu(true);
-        jComboBox2.setName("Select"); // NOI18N
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        comboCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocktail", "Getraenk" }));
+        comboCategory.setToolTipText("");
+        comboCategory.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        comboCategory.setInheritsPopupMenu(true);
+        comboCategory.setName("Select"); // NOI18N
+        comboCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                comboCategoryActionPerformed(evt);
             }
         });
 
         jList1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jList1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        listPane.setViewportView(jList1);
 
-        jToggleButton1.setText("A - C");
-        jToggleButton1.setPreferredSize(new java.awt.Dimension(60, 25));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAC.setText("A - C");
+        btnAC.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnACActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("D - F");
-        jToggleButton2.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnDF.setText("D - F");
+        btnDF.setPreferredSize(new java.awt.Dimension(60, 25));
 
-        jToggleButton3.setText("G - J");
-        jToggleButton3.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnGJ.setText("G - J");
+        btnGJ.setPreferredSize(new java.awt.Dimension(60, 25));
 
-        jToggleButton4.setText("K - N");
-        jToggleButton4.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnKO.setText("K - O");
+        btnKO.setPreferredSize(new java.awt.Dimension(60, 25));
 
-        jToggleButton5.setText("Q - S");
-        jToggleButton5.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnPS.setText("P - S");
+        btnPS.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPSActionPerformed(evt);
+            }
+        });
 
-        jToggleButton6.setText("T - Z");
-        jToggleButton6.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnTZ.setText("T - Z");
+        btnTZ.setPreferredSize(new java.awt.Dimension(60, 25));
 
-        jToggleButton7.setText("*");
-        jToggleButton7.setPreferredSize(new java.awt.Dimension(60, 25));
+        btnAll.setText("*");
+        btnAll.setPreferredSize(new java.awt.Dimension(60, 25));
 
-        jButton2.setText("Schließen");
+        btnClose.setText("Schließen");
 
-        jCheckBox1.setText("alkoholfrei");
+        chkNoAlk.setText("alkoholfrei");
 
-        jCheckBox2.setText("fruchtig");
+        chkfruity.setText("fruchtig");
 
-        jCheckBox3.setText("hart");
+        chkHard.setText("hart");
 
-        jCheckBox5.setText("sahnig");
+        chkCream.setText("sahnig");
 
-        jButton3.setText("Zurücksetzen");
+        btnApply.setText("Anwenden");
+
+        btnReset.setText("Zurücksetzen");
 
         jMenu3.setText("File");
-        jMenuBar2.add(jMenu3);
+        jMenuBar.add(jMenu3);
 
         jMenu4.setText("Edit");
-        jMenuBar2.add(jMenu4);
+        jMenuBar.add(jMenu4);
 
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,98 +146,108 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
+                            .addComponent(listPane)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAC, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnGJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnKO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 30, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnApply, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jCheckBox2)
-                                .addComponent(jCheckBox1)
-                                .addComponent(jCheckBox3)
-                                .addComponent(jCheckBox5)))))
+                                .addComponent(chkfruity)
+                                .addComponent(chkNoAlk)
+                                .addComponent(chkHard)
+                                .addComponent(chkCream))
+                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(32, 32, 32))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApply, btnReset});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(comboCategory, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(comboCreate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchField))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnGJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnKO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(chkNoAlk)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox2)
+                        .addComponent(chkfruity)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox3)
+                        .addComponent(chkHard)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox5)
+                        .addComponent(chkCream)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnApply)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReset)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnClose))
+                    .addComponent(listPane, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCreateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboCreateActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void comboCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_comboCategoryActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btnACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btnACActionPerformed
+
+    private void btnPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,28 +285,112 @@ public class MainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JToggleButton btnAC;
+    private javax.swing.JToggleButton btnAll;
+    private javax.swing.JButton btnApply;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JToggleButton btnDF;
+    private javax.swing.JToggleButton btnGJ;
+    private javax.swing.JToggleButton btnKO;
+    private javax.swing.JToggleButton btnPS;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JToggleButton btnTZ;
+    private javax.swing.JCheckBox chkCream;
+    private javax.swing.JCheckBox chkHard;
+    private javax.swing.JCheckBox chkNoAlk;
+    private javax.swing.JCheckBox chkfruity;
+    private javax.swing.JComboBox<String> comboCategory;
+    private javax.swing.JComboBox<String> comboCreate;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JScrollPane listPane;
+    private javax.swing.JTextField searchField;
     // End of variables declaration//GEN-END:variables
+    // Beginn Methoden
+    
+    // select Cocktail / Getraenk
+    public void selectCategory()
+    {
+        
+    }
+    
+    // Search
+    public void search()
+    {
+        
+    }
+    
+    // Liste von Cocktails 
+    public void listSearchResult()
+    {
+        
+    }
+    
+    // Sortieren der Auswahlliste
+    public void filterSearchResultALF()
+    {
+        
+    }
+    
+    // Anwenden der Filtereinstellungen
+    public void filterSearchResultCHK()
+    {
+        
+    }
+    
+    // Filter Akl
+    public void filteringAlk()
+    {
+        
+    }
+    
+    // Filter fruity
+   public void filteringNonFruity()
+    {
+        
+    }
+   
+   //Filter hard
+   public void filteringSoftCocktails()
+    {
+        
+    }
+    
+   // Filtering Cream
+   public void filteringCream()
+    {
+        
+    }
+    
+    // zurücksetzen der Filter 
+    public void filterreset()
+    {
+        
+    }
+    
+    // schließen
+    public void close()
+    {
+        
+    }
+    
+    // Cocktail erstellen
+    public void createCocktail()
+    {
+        
+    }
+    
+    // Bestandteil erstellen
+    public void createBestandteil()
+    {
+        
+    }
+    
+    
+
 }
+
+
