@@ -151,11 +151,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="L&#xf6;schen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bearbeiten"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  * @author Jennifer Lange und Joerg Swienty
  */
 public class RezeptGUI extends javax.swing.JFrame {
-    private Cocktail initCocktail;
+    private Cocktail initCocktail = null;
 
     /**
      * Creates new form RezeptGUI
@@ -82,8 +82,18 @@ public class RezeptGUI extends javax.swing.JFrame {
         });
 
         btnDelete.setText("Löschen");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Bearbeiten");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         jMenuBar.add(jMenu1);
@@ -140,6 +150,16 @@ public class RezeptGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        openEditCocktailWindow(initCocktail);
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        deleteAndClose();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,7 +254,7 @@ public class RezeptGUI extends javax.swing.JFrame {
     // Cocktail bearbeiten Fenster öffnen
     public void openEditCocktailWindow(Cocktail cocktail)
     {
-        
+        new CocktailGUI().show(cocktail);
     }
     
     // refresh RezeptGUI
@@ -246,7 +266,8 @@ public class RezeptGUI extends javax.swing.JFrame {
     // löschen vom Cocktail und schließen des Fensters
     public void deleteAndClose()
     {
-        
+        initCocktail.delete();
+        this.dispose();
     }
     
     
