@@ -72,6 +72,11 @@ public class MainGUI extends javax.swing.JFrame {
         searchField.setText("hier tippen");
 
         btnSearch.setText("Suchen");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         comboCreate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erstellen...", "Cocktail", "Bestandteil" }));
         comboCreate.setToolTipText("");
@@ -172,6 +177,11 @@ public class MainGUI extends javax.swing.JFrame {
         chkCream.setText("sahnig");
 
         btnApply.setText("Anwenden");
+        btnApply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApplyActionPerformed(evt);
+            }
+        });
 
         btnReset.setText("Zurücksetzen");
 
@@ -328,15 +338,24 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void comboCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCreateActionPerformed
         // TODO add your handling code here:
-        if(String.valueOf(comboCreate.getSelectedItem()).equals("Bestandteil"))
-        {
+        if (String.valueOf(comboCreate.getSelectedItem()).equals("Bestandteil")) {
             createBestandteil();
         }
-        if(String.valueOf(comboCreate.getSelectedItem()).equals("Cocktail"))
-        {
+        if (String.valueOf(comboCreate.getSelectedItem()).equals("Cocktail")) {
             createCocktail();
         }
     }//GEN-LAST:event_comboCreateActionPerformed
+
+    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
+        // TODO add your handling code here:
+        filterSearchResultCHK();
+    }//GEN-LAST:event_btnApplyActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        search();
+
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,12 +420,30 @@ public class MainGUI extends javax.swing.JFrame {
 
 // Beginn Methoden
     // select Cocktail / Getraenk
-    public void selectCategory() {
-
+    public String selectCategory() {
+        String category = comboCategory.getSelectedItem().toString();
+        return category;
     }
 
     // Search
     public void search() {
+        String search = searchField.getText();
+        DefaultListModel listModel = new DefaultListModel();
+        listContainer = new JList(listModel);
+        for (Cocktail cocktail : cocktailsList) {
+            if (selectCategory().equals("Cocktail")) {
+                if (cocktail.getName().contains(search)) {
+                    listModel.addElement(cocktail.getName());
+                }
+            } else if (selectCategory().equals("Bestandteil")) {
+                for (int i = 0; i < cocktail.getZutaten().length; i++) {
+                    if (cocktail.getZutaten()[i].getName().contains(search)) {
+                        listModel.addElement(cocktail.getName());
+                    }
+
+                }
+            }
+        }
 
     }
 
@@ -512,38 +549,119 @@ public class MainGUI extends javax.swing.JFrame {
             }
 
         }
-        
-        
+
     }
 
     // Anwenden der Filtereinstellungen
     public void filterSearchResultCHK() {
+        if (chkCream.isSelected()) {
+            filteringCream();
+        }
+        if (chkNoAlk.isSelected()) {
+            filteringAlk();
+        }
+        if (chkHard.isSelected()) {
+            filteringSoftCocktails();
+        }
+        if (chkfruity.isSelected()) {
+            filteringNonFruity();
+        }
 
     }
 
     // Filter Akl
     public void filteringAlk() {
+        DefaultListModel listModel = new DefaultListModel();
+        listContainer = new JList(listModel);
+        for (Cocktail cocktail : cocktailsList) {
+            double perCentAlk = 0;
+            for (int i = 0; i < cocktail.getZutaten().length; i++) {
+
+                perCentAlk += cocktail.getZutaten()[i].getAlk();
+            }
+            if (perCentAlk == 0) {
+                listModel.addElement(cocktail.getName());
+            }
+
+        }
 
     }
 
     // Filter fruity
     public void filteringNonFruity() {
+        DefaultListModel listModel = new DefaultListModel();
+        listContainer = new JList(listModel);
+        for (Cocktail cocktail : cocktailsList) {
+            Boolean fruity = false;
+            for (int i = 0; i < cocktail.getZutaten().length; i++) {
+                if (cocktail.getZutaten()[i].getName().toLowerCase().contains("saft")) {
+                    fruity = true;
+                    break;
+                }
+
+            }
+            if (fruity) {
+                listModel.addElement(cocktail.getName());
+            }
+
+        }
 
     }
 
     //Filter hard
     public void filteringSoftCocktails() {
+        DefaultListModel listModel = new DefaultListModel();
+        listContainer = new JList(listModel);
+        for (Cocktail cocktail : cocktailsList) {
+            double alkPur = 0;
+            for (int i = 0; i < cocktail.getZutaten().length; i++) {
+                if (cocktail.getZutaten()[i].getAlk() > 0) {
+                    alkPur += cocktail.getMenge()[i];
+                }
+
+            }
+            if (alkPur >= 6) {
+                listModel.addElement(cocktail.getName());
+            }
+
+        }
 
     }
 
     // Filtering Cream
     public void filteringCream() {
+        String[] bannedCream = {"sahne", "cream", "creme", "crema", "bailey's", "batida",
+            "milch", "baileys", "milk"};
+        DefaultListModel listModel = new DefaultListModel();
+        listContainer = new JList(listModel);
+        for (Cocktail cocktail : cocktailsList) {
+            Boolean cream = false;
+            for (int i = 0; i < cocktail.getZutaten().length; i++) {
+                for (int j = 0; j < bannedCream.length; j++) {
+                    if (cocktail.getZutaten()[i].getName().toLowerCase().contains(bannedCream[j])) {
+                        cream = true;
+                        break;
+                    }
+                }
+                if (cream) {
+                    break;
+                }
+            }
+            if (cream) {
+                listModel.addElement(cocktail.getName());
+            }
+
+        }
 
     }
 
     // zurücksetzen der Filter 
     public void filterreset() {
-        
+        listSearchResult();
+        chkCream.setSelected(false);
+        chkHard.setSelected(false);
+        chkNoAlk.setSelected(false);
+        chkfruity.setSelected(false);
     }
 
     // schließen
@@ -560,7 +678,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     // Bestandteil erstellen
     public void createBestandteil() {
-       new BestandteileGUI().setVisible(true);
+        new BestandteileGUI().setVisible(true);
 
     }
 

@@ -161,6 +161,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Suchen"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboCreate">
       <Properties>
@@ -348,6 +351,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Anwenden"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApplyActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnReset">
       <Properties>
