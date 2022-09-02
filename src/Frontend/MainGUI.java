@@ -10,6 +10,7 @@ import Middleware.Cocktail;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.text.Position;
 
@@ -72,7 +73,7 @@ public class MainGUI extends javax.swing.JFrame {
 
         btnSearch.setText("Suchen");
 
-        comboCreate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cocktail erstellen", "Cocktail editieren", "Getraenk erstellen", "Getraenk editieren" }));
+        comboCreate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erstellen...", "Cocktail", "Bestandteil" }));
         comboCreate.setToolTipText("");
         comboCreate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         comboCreate.setInheritsPopupMenu(true);
@@ -190,43 +191,46 @@ public class MainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listPane)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(listPane, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(btnAC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnGJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnKO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTZ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(30, 30, 30)))
-                        .addGap(18, 18, 18)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnApply, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(chkfruity)
-                                .addComponent(chkNoAlk)
-                                .addComponent(chkHard)
-                                .addComponent(chkCream))
-                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGap(32, 32, 32))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnApply, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(chkfruity)
+                                        .addComponent(chkNoAlk)
+                                        .addComponent(chkHard)
+                                        .addComponent(chkCream))
+                                    .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAC, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnDF, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnGJ, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnKO, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnPS, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnTZ, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnApply, btnClose, btnReset});
@@ -236,35 +240,30 @@ public class MainGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboCategory)
-                    .addComponent(comboCreate, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCreate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchField))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnKO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(chkNoAlk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkfruity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkHard)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkCream)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(8, 8, 8)
                         .addComponent(btnApply)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReset)
@@ -277,20 +276,18 @@ public class MainGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCreateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboCreateActionPerformed
-
     private void comboCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboCategoryActionPerformed
 
     private void btnACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnACActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnACActionPerformed
 
     private void btnPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPSActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnPSActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -300,23 +297,46 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btnDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDFActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnDFActionPerformed
 
     private void btnGJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGJActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnGJActionPerformed
 
     private void btnKOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKOActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnKOActionPerformed
 
     private void btnTZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTZActionPerformed
         // TODO add your handling code here:
+        filterSearchResultALF(evt);
     }//GEN-LAST:event_btnTZActionPerformed
 
     private void btnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllActionPerformed
         // TODO add your handling code here:
+        listSearchResult();
+        btnAC.setSelected(false);
+        btnDF.setSelected(false);
+        btnGJ.setSelected(false);
+        btnKO.setSelected(false);
+        btnPS.setSelected(false);
+        btnTZ.setSelected(false);
     }//GEN-LAST:event_btnAllActionPerformed
+
+    private void comboCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCreateActionPerformed
+        // TODO add your handling code here:
+        if(String.valueOf(comboCreate.getSelectedItem()).equals("Bestandteil"))
+        {
+            createBestandteil();
+        }
+        if(String.valueOf(comboCreate.getSelectedItem()).equals("Cocktail"))
+        {
+            createCocktail();
+        }
+    }//GEN-LAST:event_comboCreateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,7 +441,7 @@ public class MainGUI extends javax.swing.JFrame {
         }
         if (e.getSource().equals(btnDF)) {
 
-            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+            //Alle Strings in listModel die nicht mit D, E, F beginnen werden 
             //aus der Liste entfernt
             for (Cocktail cocktail : cocktailsList) {
                 if (listContainer.getNextMatch("D", 0, Position.Bias.Forward) >= 0
@@ -432,78 +452,68 @@ public class MainGUI extends javax.swing.JFrame {
             }
 
         }
-        if (e.getSource().equals(btnGJ))
-        {
-            
-            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+        if (e.getSource().equals(btnGJ)) {
+
+            //Alle Strings in listModel die nicht mit G, H, I, J beginnen werden 
             //aus der Liste entfernt
-            for(Cocktail cocktail : cocktailsList)
-            {
-                if(listContainer.getNextMatch("G", 0, Position.Bias.Forward) >= 0 || 
-                    listContainer.getNextMatch("H", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("I", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("J", 0, Position.Bias.Forward) >= 0)
-                {
+            for (Cocktail cocktail : cocktailsList) {
+                if (listContainer.getNextMatch("G", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("H", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("I", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("J", 0, Position.Bias.Forward) >= 0) {
                     listModel.addElement(cocktail.getName());
                 }
             }
-            
+
         }
-        if (e.getSource().equals(btnKO))
-        {
-            
-            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+        if (e.getSource().equals(btnKO)) {
+
+            //Alle Strings in listModel die nicht mit K, L, M, N, O beginnen werden 
             //aus der Liste entfernt
-            for(Cocktail cocktail : cocktailsList)
-            {
-                if(listContainer.getNextMatch("K", 0, Position.Bias.Forward) >= 0 || 
-                    listContainer.getNextMatch("L", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("M", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("N", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("O", 0, Position.Bias.Forward) >= 0)
-                {
+            for (Cocktail cocktail : cocktailsList) {
+                if (listContainer.getNextMatch("K", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("L", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("M", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("N", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("O", 0, Position.Bias.Forward) >= 0) {
                     listModel.addElement(cocktail.getName());
                 }
             }
-            
+
         }
-        if (e.getSource().equals(btnPS))
-        {
-            
-            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+        if (e.getSource().equals(btnPS)) {
+
+            //Alle Strings in listModel die nicht mit P, Q, R, S beginnen werden 
             //aus der Liste entfernt
-            for(Cocktail cocktail : cocktailsList)
-            {
-                if(listContainer.getNextMatch("P", 0, Position.Bias.Forward) >= 0 || 
-                    listContainer.getNextMatch("Q", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("R", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("S", 0, Position.Bias.Forward) >= 0)
-                {
+            for (Cocktail cocktail : cocktailsList) {
+                if (listContainer.getNextMatch("P", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("Q", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("R", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("S", 0, Position.Bias.Forward) >= 0) {
                     listModel.addElement(cocktail.getName());
                 }
             }
-            
+
         }
-        if (e.getSource().equals(btnTZ))
-        {
-            
-            //Alle Strings in listModel die nicht mit A, B, C beginnen werden 
+        if (e.getSource().equals(btnTZ)) {
+
+            //Alle Strings in listModel die nicht mit T, U, V, W, X, Y, Z beginnen werden 
             //aus der Liste entfernt
-            for(Cocktail cocktail : cocktailsList)
-            {
-                if(listContainer.getNextMatch("T", 0, Position.Bias.Forward) >= 0 || 
-                    listContainer.getNextMatch("U", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("V", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("W", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("X", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("Y", 0, Position.Bias.Forward) >= 0 ||
-                    listContainer.getNextMatch("Z", 0, Position.Bias.Forward) >= 0)
-                {
+            for (Cocktail cocktail : cocktailsList) {
+                if (listContainer.getNextMatch("T", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("U", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("V", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("W", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("X", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("Y", 0, Position.Bias.Forward) >= 0
+                        || listContainer.getNextMatch("Z", 0, Position.Bias.Forward) >= 0) {
                     listModel.addElement(cocktail.getName());
                 }
             }
-            
+
         }
+        
+        
     }
 
     // Anwenden der Filtereinstellungen
@@ -533,7 +543,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     // zurücksetzen der Filter 
     public void filterreset() {
-
+        
     }
 
     // schließen
@@ -544,11 +554,13 @@ public class MainGUI extends javax.swing.JFrame {
 
     // Cocktail erstellen
     public void createCocktail() {
+        new CocktailGUI().setVisible(true);
 
     }
 
     // Bestandteil erstellen
     public void createBestandteil() {
+       new BestandteileGUI().setVisible(true);
 
     }
 

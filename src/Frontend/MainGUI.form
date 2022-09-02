@@ -53,51 +53,57 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="comboCategory" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="searchField" min="-2" pref="302" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSearch" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="comboCreate" min="-2" pref="116" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="listPane" pref="518" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="comboCategory" min="-2" pref="96" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="searchField" min="-2" pref="302" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnSearch" min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="listPane" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="comboCreate" min="-2" pref="116" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="btnAC" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnDF" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnGJ" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnKO" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnPS" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnTZ" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAll" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnClose" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnApply" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Component id="chkfruity" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkNoAlk" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkHard" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkCream" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnReset" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnClose" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnApply" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="chkfruity" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkNoAlk" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkHard" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="chkCream" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btnReset" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnAC" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="btnDF" min="-2" pref="72" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="btnGJ" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="btnKO" min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="btnPS" min="-2" pref="73" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Component id="btnTZ" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnAll" min="-2" pref="72" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,41 +112,32 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="comboCategory" max="32767" attributes="0"/>
-                  <Component id="comboCreate" alignment="1" max="32767" attributes="0"/>
+                  <Component id="comboCategory" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboCreate" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSearch" alignment="0" max="32767" attributes="0"/>
-                  <Component id="searchField" alignment="0" max="32767" attributes="0"/>
+                  <Component id="searchField" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnGJ" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnKO" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPS" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTZ" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAll" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnAC" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnDF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAC" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnGJ" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnKO" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPS" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTZ" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAll" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="chkNoAlk" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="chkfruity" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="chkHard" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="chkCream" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="btnApply" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnReset" min="-2" max="-2" attributes="0"/>
@@ -168,11 +165,10 @@
     <Component class="javax.swing.JComboBox" name="comboCreate">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Cocktail erstellen"/>
-            <StringItem index="1" value="Cocktail editieren"/>
-            <StringItem index="2" value="Getraenk erstellen"/>
-            <StringItem index="3" value="Getraenk editieren"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Erstellen..."/>
+            <StringItem index="1" value="Cocktail"/>
+            <StringItem index="2" value="Bestandteil"/>
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
