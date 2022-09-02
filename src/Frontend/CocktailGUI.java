@@ -49,7 +49,6 @@ public class CocktailGUI extends javax.swing.JFrame {
 
         jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         jDialog1.setAlwaysOnTop(true);
-        jDialog1.setPreferredSize(new java.awt.Dimension(350, 200));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Möchten Sie die Änderungen speichern ?");

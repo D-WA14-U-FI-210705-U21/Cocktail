@@ -7,7 +7,7 @@ package Frontend;
 
 /**
  *
- * @author buennig
+ * @author Jennifer Lange und Joerg Swienty
  */
 public class RezeptGUI extends javax.swing.JFrame {
 
