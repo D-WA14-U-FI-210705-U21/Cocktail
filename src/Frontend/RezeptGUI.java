@@ -4,17 +4,27 @@
  * and open the template in the editor.
  */
 package Frontend;
+import Middleware.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
 
 /**
  *
  * @author Jennifer Lange und Joerg Swienty
  */
 public class RezeptGUI extends javax.swing.JFrame {
+    private Cocktail initCocktail;
 
     /**
      * Creates new form RezeptGUI
      */
     public RezeptGUI() {
+        
         initComponents();
     }
 
@@ -65,6 +75,11 @@ public class RezeptGUI extends javax.swing.JFrame {
         );
 
         btnClose.setText("Schließen");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Löschen");
 
@@ -121,6 +136,11 @@ public class RezeptGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -172,26 +192,47 @@ public class RezeptGUI extends javax.swing.JFrame {
 
 // Methoden
     
-    // Cocktailname anzeigen
-    public void dislayCocktailname()
+    
+    
+    // Öffnen des Fensters
+    public void openWindow(Cocktail cocktail) throws IOException
     {
-        
+        initCocktail = cocktail;
+        displayCocktailname(cocktail.getName());
+        displayCocktailRecipe(cocktail.getZutaten());
+        displayCocktailimage(cocktail.getBild());
+        this.setVisible(true);
+    }
+    
+    // Cocktailname anzeigen
+    public void displayCocktailname(String name)
+    {
+        lblCocktail.setText(name);
     }
     
     // Cocktail Bestandteile als Liste anzeigen
-    public void dislayCocktailRecipe()
+    public void displayCocktailRecipe(Bestandteile[] zutaten)
     {
-        
+        String recipe = "Zutaten:\n";
+        for (int i = 0; i < zutaten.length; i++) {
+           String fullRecipe = recipe.concat(zutaten[i].toString() + "\n");
+           recipe = fullRecipe;
+        }
+        txtRecipe.setText(recipe);
     }
     
     // Bild anzeigen
-    public void dislayCocktailimage()
+    public void displayCocktailimage(String pfad) throws IOException
     {
+        
+        BufferedImage image = ImageIO.read(new File(pfad));
+        JLabel lblImg = new JLabel(new ImageIcon(image));
+        pnlImage.add(lblImg);
         
     }
     
     // Cocktail bearbeiten Fenster öffnen
-    public void openEditCocktailWindow()
+    public void openEditCocktailWindow(Cocktail cocktail)
     {
         
     }
@@ -208,9 +249,5 @@ public class RezeptGUI extends javax.swing.JFrame {
         
     }
     
-    // Fenster schließen
-    public void closeWindow()
-    {
-        
-    }
+    
 }
