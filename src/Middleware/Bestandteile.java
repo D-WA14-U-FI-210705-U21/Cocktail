@@ -5,28 +5,38 @@ import Frontend.Dialog;
 public class Bestandteile {
     private int pk_ID = 0;
     private String name;
-    private double alk = 0.0f;
+    private double alk = 0.0;
     private boolean status = true; // true=Getraenk, false=Sonstiges
     
     /*
     Konstruktoren
     */
-    public Bestandteile(String name, double alk) {
+    public Bestandteile(String name, double alk, boolean status) {
         if(name == null)name = "";
         if (alk < 0) alk = -alk;
-            
         this.name = name;
         this.alk = alk;
-        
+        this.status = status;   
     }
-
+    /**
+     * Erzeugt per default einen festen Cocktail Bestandteil
+     * @param name 
+     */
     public Bestandteile(String name) {
-        this(name, 0.0);
+        this(name, 0.0, false);
+    }
+    /**
+     * Erzeugt per default einen nichtalkoholischen Cocktail Bestandteil
+     * @param name
+     * @param status 
+     */
+    public Bestandteile(String name, boolean status) {
+        this(name, 0.0, status);
     }
 
     public Bestandteile() {
-        this("",0.0); // Konstruktor ruft eine überladene Version von sich selbst
-        // mit this auf
+        this("",0.0,true); // Konstruktor ruft eine überladene Version von sich 
+        // selbst mit this auf
         // mit super würde ein Konstruktor der uebergeordneten Klasse aufgerufen werden
     }
     
@@ -65,11 +75,9 @@ public class Bestandteile {
     public void setStatus(boolean status) {
         this.status = status;
     }
-   
-    public static Bestandteile[] getAll(){
-        Bestandteile[] retVal = new Bestandteile[1];
-
-        return retVal;
+    
+    public boolean getStatus() {
+        return status;
     }
     
     /*
@@ -104,6 +112,9 @@ public class Bestandteile {
         if (!this.name.equals(other.name)) {
             return false;
         }
+        if (this.status != other.status) {
+            return false;
+        }
         return true;
     }
     
@@ -136,18 +147,43 @@ public class Bestandteile {
     public boolean save(boolean create){
         try 
             {
-            // BestandteileDAO
+            // via BestandteileDAO
             if(create){
-                //SQL INSERT Getraenke...
+                //SQL INSERT Bestandteile...
             } else {
-                //SQL UPDATE Getraenke...
+                //SQL UPDATE Bestandteile...
             }
         } 
         catch(Exception ex) {
-            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+            new Dialog("Fehler Save Bestandteile ", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;
+    }
+     /**
+     * Loescht einen Bestandteil.
+     * @return  Loeschvorgang erfolgreich(ja/nein)
+     */
+    public boolean delete() {
+        try
+        {
+            // via BestandteileDAO
+            //SQL DELETE Bestandteile...
+        }
+        catch(Exception ex) {
+            new Dialog("Fehler Delete Bestandteile ", ex.getMessage(), true).setVisible(true);
+            return false;
+        }
+        return true;
+    }
+    //--------------------------------------------------------------------------
+    /*
+     * Statische Schnittstellen Methoden
+    */
+    public static Bestandteile[] getAll(){
+        Bestandteile[] retVal = new Bestandteile[1];
+
+        return retVal;
     }
 
 }
