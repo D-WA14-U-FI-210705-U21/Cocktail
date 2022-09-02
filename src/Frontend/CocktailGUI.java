@@ -5,12 +5,23 @@
  */
 package Frontend;
 
+import Middleware.*;
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import javax.swing.JFileChooser;
+
 /**
  *
- * @author buennig
+ * @author rebecca roeller
  */
 public class CocktailGUI extends javax.swing.JFrame {
-
+    //Attribut
+    private Cocktail cocktail;
+    private  String item;
     /**
      * Creates new form CocktailGUI
      */
@@ -27,11 +38,13 @@ public class CocktailGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        dSave = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         btnYes = new javax.swing.JButton();
         btnNo = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        fcJpgAuswahl = new javax.swing.JFileChooser();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         tfCname = new javax.swing.JTextField();
         tfZname = new javax.swing.JTextField();
         tfZmenge = new javax.swing.JTextField();
@@ -44,11 +57,13 @@ public class CocktailGUI extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        cbZsuche = new javax.swing.JComboBox<>();
         btnErase = new javax.swing.JButton();
+        acZsuche = new Frontend.AutoCompleteComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
 
-        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        jDialog1.setAlwaysOnTop(true);
+        dSave.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        dSave.setAlwaysOnTop(true);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Möchten Sie die Änderungen speichern ?");
@@ -76,14 +91,14 @@ public class CocktailGUI extends javax.swing.JFrame {
         btnCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancel.setPreferredSize(new java.awt.Dimension(69, 26));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        javax.swing.GroupLayout dSaveLayout = new javax.swing.GroupLayout(dSave.getContentPane());
+        dSave.getContentPane().setLayout(dSaveLayout);
+        dSaveLayout.setHorizontalGroup(
+            dSaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dSaveLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(dSaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dSaveLayout.createSequentialGroup()
                         .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -92,20 +107,20 @@ public class CocktailGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        dSaveLayout.setVerticalGroup(
+            dSaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dSaveLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(dSaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setName("erstellen und bearbeten"); // NOI18N
         setPreferredSize(new java.awt.Dimension(350, 450));
@@ -113,23 +128,18 @@ public class CocktailGUI extends javax.swing.JFrame {
 
         tfCname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfCname.setName(""); // NOI18N
-        tfCname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCnameActionPerformed(evt);
-            }
-        });
 
         tfZname.setEditable(false);
-        tfZname.setText("Zutat name");
+        tfZname.setBackground(new java.awt.Color(255, 255, 255));
         tfZname.setToolTipText("");
-        tfZname.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tfZname.setBorder(null);
+        tfZname.setPreferredSize(new java.awt.Dimension(2, 16));
         tfZname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfZnameActionPerformed(evt);
             }
         });
 
-        tfZmenge.setText("menge");
         tfZmenge.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfZmenge.setName(""); // NOI18N
 
@@ -145,6 +155,11 @@ public class CocktailGUI extends javax.swing.JFrame {
 
         btnAdd.setText("Hinzufügen");
         btnAdd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         tfJpg.setText("keine jpg ausgewählt");
 
@@ -171,26 +186,34 @@ public class CocktailGUI extends javax.swing.JFrame {
         btnSave.setText("Speichern");
         btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setPreferredSize(new java.awt.Dimension(69, 23));
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Löschen");
         btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDelete.setMaximumSize(new java.awt.Dimension(63, 23));
         btnDelete.setMinimumSize(new java.awt.Dimension(63, 23));
         btnDelete.setPreferredSize(new java.awt.Dimension(69, 23));
-
-        cbZsuche.setEditable(true);
-        cbZsuche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbZsuche.setToolTipText("");
-        cbZsuche.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        cbZsuche.setPreferredSize(new java.awt.Dimension(64, 18));
-        cbZsuche.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbZsucheActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
         btnErase.setText("Entfernen");
         btnErase.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        acZsuche.setEditable(true);
+        acZsuche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acZsucheActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("menge");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,35 +221,42 @@ public class CocktailGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnErase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(tfZname, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnErase, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(tfZmenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnAddjpg)
+                                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(40, 40, 40)
+                                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tfJpg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(lZutaten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(tfZname, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAdd))
-                                .addComponent(tfCname, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                                .addComponent(cbZsuche, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(tfZmenge, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(11, 11, 11)
+                                    .addComponent(btnAdd))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddjpg)
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfJpg, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lZutaten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addComponent(acZsuche, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCname, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,21 +268,27 @@ public class CocktailGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cbZsuche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(acZsuche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfZname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfZmenge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnAdd)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnErase)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lZutaten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lZutaten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddjpg)
                     .addComponent(tfJpg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,28 +300,39 @@ public class CocktailGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfZnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZnameActionPerformed
-        // TODO add your handling code here:
+        tfZname.setText(acZsuche.getSelectedItem().toString());
     }//GEN-LAST:event_tfZnameActionPerformed
 
     private void btnAddjpgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddjpgActionPerformed
-        // TODO add your handling code here:
+        FileInputStream fis;
+        BufferedReader br;
+        fcJpgAuswahl.setDialogType(JFileChooser.OPEN_DIALOG);
+        fcJpgAuswahl.showOpenDialog(this);
+        File file = fcJpgAuswahl.getSelectedFile();
+        try {
+            //bild laden
+            tfJpg.setText(file.getAbsolutePath());
+            fis = new FileInputStream(file);
+            br = new BufferedReader(new InputStreamReader(fis));
+            //bild an Mildeware weitergeben 
+            cocktail.setBild(file.getAbsolutePath());
+            br.close();
+            fis.close();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }    
     }//GEN-LAST:event_btnAddjpgActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: zurück
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void cbZsucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbZsucheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbZsucheActionPerformed
 
     private void lZutatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lZutatenActionPerformed
         // TODO add your handling code here:
+        if (lZutaten.getItemCount()==0) {
+            btnErase.setVisible(false);
+        }else btnErase.setVisible(true);
     }//GEN-LAST:event_lZutatenActionPerformed
-
-    private void tfCnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCnameActionPerformed
 
     private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         // TODO add your handling code here:
@@ -295,6 +342,66 @@ public class CocktailGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnYesActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+       
+        if (tfZname.getText().isEmpty()){
+            tfZname.setBackground(Color.DARK_GRAY);
+        }
+        if (tfZmenge.getText().isEmpty()){
+            tfZmenge.setBackground(Color.DARK_GRAY);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        //cocktail.save();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void acZsucheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acZsucheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acZsucheActionPerformed
+    
+    private void additem(){
+       
+    }
+    private void saveDialog(){
+        dSave.setVisible(true);
+    }
+    private void close(){
+        this.setVisible(false);
+    }
+    public void show(){
+        btnDelete.setVisible(false);
+        this.setVisible(true);
+    }
+    public void show(Cocktail obj){
+        String cname = obj.getName();
+        tfCname.setText(cname);
+        
+        for (int i = 0; i < obj.getZutaten().length; i++) {
+            String zname = obj.getZutaten()[i].getName();
+            int menge = obj.getMenge()[i];
+            double alk = obj.getZutaten()[i].getAlk();
+            boolean status = obj.getZutaten()[i].isStatus();
+            
+            if (status==true && alk>0) {
+                item = zname + " "+ alk + " "+ menge +" cl";
+            }else if (status==true && alk==0) {
+                item = zname + " "+ menge +" ml";
+            }else if (status==false) {
+                item = zname + " "+ menge;  
+            }
+            lZutaten.add(item);
+        } 
+        if (!obj.getBild().equals("")) {
+            tfJpg.setText(obj.getBild());
+        }
+        this.setVisible(true);
+    }
+	
     /**
      * @param args the command line arguments
      */
@@ -323,14 +430,13 @@ public class CocktailGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CocktailGUI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new CocktailGUI().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private Frontend.AutoCompleteComboBox acZsuche;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddjpg;
     private javax.swing.JButton btnBack;
@@ -340,11 +446,14 @@ public class CocktailGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnNo;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnYes;
-    private javax.swing.JComboBox<String> cbZsuche;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog dSave;
+    private javax.swing.JFileChooser fcJpgAuswahl;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private java.awt.List lZutaten;
     private javax.swing.JTextField tfCname;
     private javax.swing.JLabel tfJpg;

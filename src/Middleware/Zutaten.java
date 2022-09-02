@@ -69,10 +69,25 @@ public class Zutaten {
             }
         } 
         catch(Exception ex) {
-            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+            new Dialog("Fehler Save Zutaten ", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;
     }
-
+/**
+     * Loescht eine Zutat.
+     * @return  Loeschvorgang erfolgreich(ja/nein)
+     */
+    public boolean delete() {
+        try
+        {
+            // via ZutatenDAO
+            //SQL DELETE Zutaten...
+        }
+        catch(Exception ex) {
+            new Dialog("Fehler Delete Zutaten ", ex.getMessage(), true).setVisible(true);
+            return false;
+        }
+        return true;
+    }
 }

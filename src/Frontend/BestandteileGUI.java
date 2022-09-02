@@ -5,12 +5,15 @@
  */
 package Frontend;
 
+import Middleware.Bestandteile;
+
 /**
  *
- * @author buennig
+ * @author rebecca roeller
  */
 public class BestandteileGUI extends javax.swing.JFrame {
-
+    //Attribut
+    private Bestandteile bestandteil;
     /**
      * Creates new form GetraenkeGUI
      */
@@ -33,7 +36,7 @@ public class BestandteileGUI extends javax.swing.JFrame {
         btnNo = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lAlk = new javax.swing.JLabel();
         tfBestandteil = new javax.swing.JTextField();
         tfAlk = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
@@ -99,12 +102,19 @@ public class BestandteileGUI extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(350, 225));
 
         jLabel1.setText("Bestandteil");
 
-        jLabel2.setText("Alkoholgehalt");
+        lAlk.setText("Alkoholgehalt");
+
+        tfBestandteil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfBestandteilActionPerformed(evt);
+            }
+        });
 
         tfAlk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +135,11 @@ public class BestandteileGUI extends javax.swing.JFrame {
         btnDelete.setLabel("Löschen");
         btnDelete.setMaximumSize(new java.awt.Dimension(63, 23));
         btnDelete.setPreferredSize(new java.awt.Dimension(63, 23));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnSave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.setLabel("Speichern");
@@ -135,41 +150,45 @@ public class BestandteileGUI extends javax.swing.JFrame {
         rbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         rbStatus.setIconTextGap(2);
         rbStatus.setPreferredSize(new java.awt.Dimension(69, 16));
+        rbStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(66, 66, 66)
+                            .addComponent(tfBestandteil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(66, 66, 66)
-                                .addComponent(tfBestandteil, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tfAlk, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(92, 92, 92))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(38, 38, 38)
-                                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSave))))
-                        .addContainerGap(33, Short.MAX_VALUE))))
+                                .addComponent(lAlk)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tfAlk, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSave)))))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfBestandteil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,14 +196,14 @@ public class BestandteileGUI extends javax.swing.JFrame {
                 .addComponent(rbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lAlk)
                     .addComponent(tfAlk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +225,42 @@ public class BestandteileGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNoActionPerformed
 
+    private void rbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbStatusActionPerformed
+        // TODO add your handling code here:
+        if (!rbStatus.isSelected()) {
+            lAlk.setVisible(false);
+            tfAlk.setVisible(false);
+        }
+    }//GEN-LAST:event_rbStatusActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tfBestandteilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfBestandteilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfBestandteilActionPerformed
+
+    public void show(){
+        btnDelete.setVisible(false);
+        this.setVisible(true);
+    }
+     public void show(Bestandteile obj){
+        String zname = obj.getName();
+        double alk = obj.getAlk();
+        boolean status = obj.isStatus();
+        tfBestandteil.setText(zname);
+         if (status==true && alk!=0) {
+             rbStatus.setContentAreaFilled(true);
+             tfAlk.setText(alk+"%");
+         }else if (status==true && alk==0) {
+             rbStatus.setContentAreaFilled(true);
+              tfAlk.setVisible(false);
+         }else rbStatus.setContentAreaFilled(false);
+              tfAlk.setVisible(false);
+        this.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -251,8 +306,8 @@ public class BestandteileGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnYes;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lAlk;
     private javax.swing.JRadioButton rbStatus;
     private javax.swing.JTextField tfAlk;
     private javax.swing.JTextField tfBestandteil;

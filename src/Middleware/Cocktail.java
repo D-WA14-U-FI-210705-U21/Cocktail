@@ -25,7 +25,11 @@ public class Cocktail {
     public Cocktail(Bestandteile[] z, int[] m, String name) {
         this(z, m, name, "");
     }
-
+    
+    public Cocktail(String name) {
+        this(new Bestandteile[0], new int[0], name, "");
+    }
+    
     public Cocktail() {
         this(new Bestandteile[0], new int[0], "", "");
     }
@@ -191,7 +195,7 @@ public class Cocktail {
     public boolean save(boolean create){
         try 
             {   
-            // CocktialDAO und ZutatenDAO
+            // via CocktialDAO und ZutatenDAO
             if(create){
                 //SQL INSERT Cocktails...
                 //SQL INSERT Zutaten...
@@ -202,18 +206,40 @@ public class Cocktail {
             }
         } 
         catch(Exception ex) {
-            new Dialog("Fehler", ex.getMessage(), true).setVisible(true);
+            new Dialog("Fehler Save Cocktail ", ex.getMessage(), true).setVisible(true);
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Loescht einen Cocktail.
+     * @return  Loeschvorgang erfolgreich(ja/nein)
+     */
+    public boolean delete() {
+        try
+        {
+            // via CocktialDAO und ZutatenDAO
+            //SQL DELETE Zutaten von Cocktail...
+            //SQL DELETE Cocktails...
+        }
+        catch(Exception ex) {
+            new Dialog("Fehler Delete Cocktail ", ex.getMessage(), true).setVisible(true);
             return false;
         }
         return true;
     }
 
-    
+    //--------------------------------------------------------------------------
+    /*
+     * Statische Schnittstellen Methoden
+    */
     public static Cocktail[] getAll(){
         Cocktail[] retVal = new Cocktail[1];
 
         return retVal;
     }
+
+    //--------------------------------------------------------------------------
     /*
      * Interne Service-Methoden
     */
